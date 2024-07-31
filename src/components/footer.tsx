@@ -46,7 +46,7 @@ export default function Footer() {
             className="flex items-center transition-all hover:text-neutral-800"
             rel="noopener noreferrer"
             target="_blank"
-            href="https://lucasamonrc/website"
+            href="https://github.com/lucasamonrc/website"
           >
             <ArrowIcon />
             <p className="ml-2 h-7">view source</p>
