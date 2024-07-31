@@ -1,5 +1,5 @@
-import { getContent } from "app/bookshelf/utils";
-import { CustomMDX } from "app/components/mdx";
+import { CustomMDX } from "@/components/mdx";
+import { getContent } from "@/lib/utils";
 import { notFound } from "next/navigation";
 
 export default function About() {

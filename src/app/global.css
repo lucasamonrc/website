@@ -1,4 +1,6 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 ::selection {
   @apply bg-blue-200/50;
@@ -105,10 +107,6 @@ html {
 
 .prose ol {
   @apply list-decimal pl-6;
-}
-
-.prose hr {
-  @apply opacity-10;
 }
 
 .prose > :first-child {

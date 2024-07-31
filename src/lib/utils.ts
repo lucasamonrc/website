@@ -26,16 +26,16 @@ function parseFrontmatter(fileContent: string) {
   return { metadata: metadata as Metadata, content };
 }
 
-function getMDXFiles(dir) {
+function getMDXFiles(dir: string) {
   return fs.readdirSync(dir).filter((file) => path.extname(file) === ".mdx");
 }
 
-function readMDXFile(filePath) {
+function readMDXFile(filePath: string) {
   let rawContent = fs.readFileSync(filePath, "utf-8");
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir) {
+function getMDXData(dir: string) {
   let mdxFiles = getMDXFiles(dir);
   return mdxFiles.map((file) => {
     let { metadata, content } = readMDXFile(path.join(dir, file));
@@ -50,11 +50,11 @@ function getMDXData(dir) {
 }
 
 export function getContent() {
-  return getMDXData(path.join(process.cwd(), "app", "content"));
+  return getMDXData(path.join(process.cwd(), "src", "content"));
 }
 
 export function getBlogPosts() {
-  return getMDXData(path.join(process.cwd(), "app", "bookshelf", "posts"));
+  return getMDXData(path.join(process.cwd(), "src", "posts"));
 }
 
 export function formatDate(date: string, includeRelative = false) {
