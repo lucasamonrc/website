@@ -1,21 +1,27 @@
-import { BlogPosts } from 'app/components/posts'
+import { BlogPosts } from "app/components/posts";
+import { getContent } from "./bookshelf/utils";
+import { notFound } from "next/navigation";
+import { CustomMDX } from "./components/mdx";
 
 export default function Page() {
+  const intro = getContent().find((content) => content.slug === "intro");
+
+  if (!intro) {
+    notFound();
+  }
+
   return (
     <section>
-      <h1 className="mb-8 text-2xl font-semibold tracking-tighter">
-        My Portfolio
-      </h1>
-      <p className="mb-4">
-        {`I'm a Vim enthusiast and tab advocate, finding unmatched efficiency in
-        Vim's keystroke commands and tabs' flexibility for personal viewing
-        preferences. This extends to my support for static typing, where its
-        early error detection ensures cleaner code, and my preference for dark
-        mode, which eases long coding sessions by reducing eye strain.`}
-      </p>
-      <div className="my-8">
-        <BlogPosts />
+      <div className="bg-white max-w-max p-2 rounded-full shadow-sm ring-1 ring-gray-200/50 -rotate-2 shrink-0 mb-8 mx-auto">
+        <img
+          src="https://github.com/lucasamonrc.png"
+          alt=""
+          className="bg-gray-200 rounded-full w-20 sm:w-24"
+        />
       </div>
+      <article className="prose">
+        <CustomMDX source={intro.content} />
+      </article>
     </section>
-  )
+  );
 }
