@@ -1,12 +1,14 @@
-import { getContent } from "../lib/utils";
-import { notFound } from "next/navigation";
-import { CustomMDX } from "../components/mdx";
+import { CustomMDX } from "@/components/mdx";
+import { getContent } from "@/lib/utils";
 import Image from "next/image";
+import { notFound } from "next/navigation";
 
-export default function Page() {
-  const intro = getContent().find((content) => content.slug === "intro");
+export default function Bookshelf() {
+  const bookshelf = getContent().find(
+    (content) => content.slug === "bookshelf"
+  );
 
-  if (!intro) {
+  if (!bookshelf) {
     notFound();
   }
 
@@ -22,7 +24,7 @@ export default function Page() {
         />
       </div>
       <article className="prose">
-        <CustomMDX source={intro.content} />
+        <CustomMDX source={bookshelf.content} />
       </article>
     </section>
   );
