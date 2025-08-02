@@ -1,0 +1,26 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Root from "../../layouts/Root.astro";
+import { render } from "astro:content";
+
+const misc = (await getCollection("misc")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+
+const miscPage = await getEntry("pages", "misc");
+
+const { Content } = await render(miscPage!);
+---
+
+<Root title="Misc | Lucas Castro">
+  <Content />
+  <ul class="p-0">
+    {
+      misc.map((item) => (
+        <li>
+          <a href={`/misc/${item.id}`}>{item.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</Root>

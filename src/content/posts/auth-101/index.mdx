@@ -1,0 +1,208 @@
+---
+title: "Auth 101"
+description: "A Survey of Auth Concepts, Practices, and Strategies"
+pubDate: 2025-03-07
+---
+
+import NotionImage from "./notion-home.png";
+import OAuthImage from "./oauth2.svg";
+import SimpleAuthImage from "./simple-auth.png";
+
+# Auth 101
+
+Auth is a subject that lives pretty close to my heart. Implementing a simple auth service was the first major project I worked on in my first job. My first big mess-up professionally was also on a task that involved auth. I don't claim to be an auth expert or an app security guru; however, auth has been a subject I've been particularly interested in since the start of my career. I hope the advice and strategies I'll be sharing here will be helpful to you as you explore this subject.
+
+With this note, I'm optimizing for breadth over depth. I'll be covering a lot of topics, and it isn't my intent to go too deep into any of them. My goal is to get you familiar with the building blocks, strategies, and terminology. If you'd like to dive deeper, I'll point you in the right direction, but I'll leave depth up to you. Hopefully, this will spark more curiosity, and you'll be motivated to learn more.
+
+## Digital Identity
+
+The primary purpose of auth is to verify claims about any given entity's identity. Identity is defined as _["the distinguishing character or personality of an individual"](https://www.merriam-webster.com/dictionary/identity)_. This _"distinguishing character"_ is an amalgamation of all the unique traits that make up an individual—its attributes, characteristics, behaviors, etc. Digital identity is simply the same concept applied to digital entities. I use the term **entity** to refer to any individual, organization, application, or device.
+
+If you use computers and the internet, you definitely have a digital identity. So does every other individual and application that you interact with digitally. The trust existing in these systems of interactions is based on your ability to verify claims about their identity and their ability to verify your claims. This problem—verifying claims—is at the heart of auth.
+
+A **claim** is a statement about an entity. It is a piece of information that can be verified or falsified. Claims can change over time, suffer side effects of actions, or be updated by the entity itself. So at any given point in time, digital identity possesses a **state**. Auth is interested in the current **state** of an entity's identity, as it makes claims about itself. As you and other entities interact over the internet, you build a digital identity with its own unique history and set of claims.
+
+Now I pose you a question:
+
+> How can a system remember who you are? Your claims? Your identity? Its state?
+
+### Example
+
+Try this. Open up a new incognito window and go to [etsy.com](https://etsy.com). Look for something to buy. Anything, it doesn't really matter. Add it to your cart, and then open a new tab, close the old one, and go to [etsy.com](https://etsy.com) again. You'll notice that the cart "remembers" that you added an item to it. Try disabling JavaScript if you want—it won't make any difference. The item will still be in your cart—probably 'til the end of the universe. 👀
+
+How does it do that?
+
+## Sessions & Tokens
+
+When you visit a website like Etsy, it creates something on the server-side that we like to call a **session**. A session is a temporary storage of information about a user—I use the term _information_, but you can replace it with identity. In this session, Etsy will store some information about you and your behavior on their website.
+
+Sessions are the building blocks of auth services. They are how you persist the state of a user's identity in your system. Sessions must be unique to each user, they usually have a duration, and they must have a unique identifier.
+
+Sessions are—by nature—ephemeral. They are created and destroyed according to the needs and preferences of the system and the user. You could always store any state in a database and call it a day, but sessions exist to make it easier to manage ephemeral state that is bound to a specific user. It is a way to control access to information. In the context of sensitive information—such as identity—access must be temporary.
+
+As I mentioned, sessions have identifiers. They must be unique to each session and should not be reused. Ever. We commonly refer to these identifiers as **tokens**. Tokens are generated and stored on the server-side, bound to a session. They must be unique, so there’s some randomness in how they are generated. To be secure, the recommendation when creating tokens is to generate 15-32 random bytes using cryptographically secure random number generators. You can then encode them using base64 or some other encoding scheme.
+
+The client doesn't need to store the information contained in the session, but it needs to store the token so it can send it back to the server when making requests. The server uses the token to look up the session and retrieve the information stored in it.
+
+In use cases like Etsy's, that’s what the server is verifying: the token. If the token exists, it should be valid and tied to a session with information about the visitor. If the token is invalid, the server will reject the request and most likely create a new session for the visitor with a brand-new token and state.
+
+Invalidating or ending a session should be as simple as deleting the token on the server. If it isn't, then there's something wrong with the design of your session management.
+
+Etsy's session example illustrates how to remember state, but it doesn't really address the problem of verifying claims about a user's identity. I hope that by now you understand that sessions and tokens are the brick and mortar of auth. In one way or another, every auth strategy builds on top of these concepts. Before we can look into more interesting strategies, it will be helpful to expand on digital identity a little bit more.
+
+## Authentication & Authorization
+
+To recap, digital identity is a collection of claims about an entity. It is the state of an entity's identity. Auth is the process of verifying claims about an entity's identity.
+
+I've been deliberate about the use of the word _auth_. It is to convey both ideas—authentication and authorization. There's a stark difference between the two, and it is crucial to understand it.
+
+### Authentication
+
+Authentication is the process of verifying claims about an entity's identity. It is the process of verifying who the user is. It accepts claims and verifies that they are true based on the information available to the authenticator. A user might indeed provide a true claim that their email is `john@doe.com`, but if the authenticator can't find that email in its database, the authenticator must reject the claim. So the validity of a claim is based on the information available to the authenticator.
+
+In summary:
+
+> [!NOTE]
+> Authentication is concerned with the question: _"Is this user really who they claim to be?"_
+
+### Authorization
+
+Authorization is not as concerned about the identity of a user as authentication is. Authorization cares about access and permissions. It wants to know if an authenticated user has access to a resource or is allowed to perform an action.
+
+You can think of it this way: You have a passport containing identity information about yourself. The passport by itself is sufficient to identify you and grant you entry to certain countries. Other countries, however, require that you have a visa—a stamp in your passport that proves you have permission to enter a specific country. So a border patrol officer will look at your passport to verify your identity (authentication) and then check your visa (authorization). With that information, they can decide if you are allowed to enter the country.
+
+In summary:
+
+> [!NOTE]
+> Authorization is concerned with the question: _"Does this user have permission to access this resource?"_
+
+How does one provide proof of their claims? Of their permissions?
+
+**Factors of authentication.**
+
+## Factors of Authentication
+
+A factor of authentication is a piece of information that can be used to verify a claim. It is a way to prove that a user is who they claim to be. You could say that it is a proof—but I wouldn't go that far. No, I would say that it is a signal. Your system must decide if the signal is strong enough to be trusted and how many signals are needed to be trusted. (_MFA_)
+
+There are many types of authentication factors. There's a lot of overlap in the devices used as factors, but the three most common are: **Knowledge, Possession, and Inherence**.
+
+### Knowledge
+
+Knowledge is any information that the user knows. This could be a password, a PIN, or a secret question and answer.
+
+### Possession
+
+Possession is any physical object that the user has. This could be a credit card, a security token, or a mobile device (_e.g., one-time passwords_).
+
+### Inherence
+
+Inherence is any biological characteristic of the user. This could be a fingerprint, a face, or a voice.
+
+Any strong auth strategy will use a combination of these factors. For example, a password and an email verification. There will always be discussions around which factors are the most secure and which are the most convenient. That’s interesting and all, but it's beyond the point of designing a secure auth strategy. Relying on a single factor is always going to be less secure than using two or more.
+
+Make this choice based on your security requirements and the user experience you want to provide. For 80% of cases, a combination of **knowledge** and **possession** is more than enough (_e.g., passwords and SMS verification_).
+
+## Simple Auth Strategy
+
+For now, let's keep it simple. We'll consider implementing a basic auth strategy that relies on a knowledge factor with a password. How is that implemented? I want to avoid discussing password security; that topic is well-documented with plenty of available resources. Instead, I want to focus on the flow and how the building blocks fit together. Here's a simple design that I think is a good starting point:
+
+![Simple authentication diagram](./simple-auth.png)
+
+Essentially, you need to collect the claim and factor (_email and password_), validate them, generate a token, bind it to a new session, and then return the token to the client. The server can prescribe to the client how the token should be stored, and in most cases, it will be in the form of a cookie. In some cases, the server will simply return the token, and the client will be responsible for storing it.
+
+When designing an auth strategy like this, you must consider the following questions:
+
+- Which claims does the service want to verify?
+- Which factors does the service want to rely on?
+- How does the service validate claims and factors?
+- How does the service generate the token?
+- How does the service create the session?
+- Where will the token be stored?
+- How will the service invalidate the session?
+
+There are other considerations, like account recovery, multi-factor authentication, and so on; but even in these cases, the questions above will surface in one way or another. I want you to think about that. A good exercise would be to design an auth strategy for email verification. See how far you can get in your design, and maybe even implement it yourself.
+
+Now, let's focus on the token storage problem. Now that we are moving from the abstract to the concrete, it's a good time to talk about **Cookies**.
+
+### Cookies
+
+Cookies are small chunks of information created by the server and placed in the client during the lifetime of a session. Since HTTP is stateless, cookies provide a convenient way to persist information about a user's session on the client. Cookies are automatically included in every request made to the server as part of the `Cookie` request header. Servers instruct the client to store the cookie using the `Set-Cookie` response header.
+
+I would argue that cookies are the preferred way of storing tokens or session information. They are simple, easy to implement, and widely supported. Over HTTPS, they are secure and can be used to store sensitive information, such as session tokens. While they are vulnerable to CSRF attacks, implementing a proper anti-CSRF strategy is a well-documented topic and should not be a counterargument against using cookies.
+
+The alternative to cookies is using a browser's local or session storage. Both are vulnerable to XSS attacks, and anyone with access to the client can retrieve the information stored in them. If tokens are stored in local or session storage, they are typically included in a request header, such as `Authorization`.
+
+It is not necessary to store the entire session in a cookie—just the token or session ID. The server can use the session ID to look up session information on the server side. This allows the server to implement any strategy it wants to manage sessions.
+
+## Interlude
+
+At this point, we already have everything we need to design and implement any auth strategy. **Sessions, tokens, and storage** form the core of any authentication system. **Digital identity concepts** such as claims, factors, authentication, and authorization shape the design of the strategy and determine how we can put sessions, tokens, and storage together to create a secure and reliable auth service.
+
+In the next section, we’ll cover slightly more complex strategies. As we do so, think about how the concepts we've covered so far fit into the bigger picture of these strategies.
+
+## OAuth
+
+I'm a [Notion](https://notion.so) user. I use it to take notes, plan my day, and manage my projects. I love it. Notion has this really nice home page in every workspace. It is a one-stop shop for all the content in the workspace, curated specifically for the user. The user can customize it further by adding blocks, filters, and more. This is how my Home page looks:
+
+![Lucas's Notion Home page](./notion-home.png)
+
+I like to keep it simple. The most important block to me is a quick overview of my calendar. I keep my schedule organized in Google Calendar, and Notion offers a way to view it right on the home page. How does it do that? From the title of this section, you can already guess—but I still want you to think about it. Pretend you know nothing about OAuth and try to figure out how to build a similar feature on your own.
+
+In the past, this kind of feature—one service accessing protected resources from another service—was implemented by asking the user to provide their credentials for the third-party service. The application would then store those credentials and use them on behalf of the user to authenticate itself with the third-party service and gain access to the protected resources. I hope you can see the problem with this approach.
+
+OAuth was created as a better alternative to this. It is an **authorization** protocol—it has very little to do with authentication. OAuth prescribes how one service may access resources from another service. It does so by using tokens instead of user credentials. At a very high level, it works like this:
+
+![OAuth diagram (simplified)](./oauth2.svg)
+
+The session is managed by the **resource owner**—the entity that owns the resources being accessed. In this case, the resource owner is the user. The **client** is the service that wants to access the resources—Notion, for example. The **resource server**—the third-party service—is the service being accessed. In this case, the resource server is Google Calendar.
+
+After the user grants permission, the resource server issues a token to the client in the form of an authorization code. The client can then exchange the authorization code for an access token, possibly along with a refresh token. The access token is then used to gain access to user resources.
+
+There you have it again: **sessions and tokens**.
+
+It is good practice for the client to specify a state parameter when redirecting the user to the authorization endpoint of the resource server. The state parameter is a random value (_another token_) used to prevent attacks like cross-site request forgery (_CSRF_). The resource server will return the same value in the response, allowing the client to verify that the response is coming from the expected server.
+
+I emphasize again that **OAuth is an authorization protocol**. It is **not** an authentication protocol. OAuth is not concerned with verifying the identity of the user; it focuses on how one service can access resources from another service. It is perfectly reasonable to implement an authentication strategy that leverages OAuth, but the protocol itself does not handle authentication. In fact, when developers claim to be using OAuth for authentication, they are most likely using **OIDC**—which is built on top of OAuth.
+
+## OIDC
+
+OIDC (_OpenID Connect_) is a topic that warrants its own discussion. In short, OIDC is a protocol built on top of OAuth that adds an additional layer of security and convenience. It is a specification that defines a new authentication flow compatible with OAuth. OIDC standardizes the process of verifying claims about a user's identity. It extends OAuth, effectively turning it into an authentication protocol.
+
+There are many additions and differences between OAuth and OIDC, but the most relevant one worth mentioning here is the **ID token**. The **ID token** is a JSON Web Token (_JWT_) that contains claims about the user's identity. The OIDC flow works similarly to the OAuth flow, with a few important differences that are beyond the scope of this note.
+
+## JWTs
+
+**JWTs (_JSON Web Tokens_)** are a special type of token used to store claims about a user's identity—though they can store any JSON-serialized information. They are popular because they are easy to generate and verify. A JWT is made up of three parts:
+
+1. **Header** – Contains metadata about the token, such as the algorithm used to sign it.
+2. **Payload** – Contains the token claims.
+3. **Signature** – Used to verify the token's authenticity.
+
+JWT payloads are **not encrypted**—they are **signed**. This means the payload can be read by anyone, but the signature ensures that the payload is authentic. Depending on how they are leveraged, JWTs can be used to manage sessions. You could almost think of a JWT as a session in and of itself.
+
+JWTs **can** be encrypted, and that is the case with the **JWE** (_JSON Web Encryption_) specification. This defines how to encrypt and decrypt JWTs. This process is beyond the scope of this note, but it is an important topic to consider when designing your auth strategy.
+
+### When should you use JWTs vs. sessions?
+
+- **JWTs** are great for **information exchange**. A resource producer can send a JWT to a resource consumer, which can then verify and trust its contents. JWTs carry **state**, making them ideal for stateless environments such as **APIs, microservices, etc.**
+
+- **Sessions** are best for tracking **ephemeral server-side state**—which is the case for most traditional web applications. They are easy to implement and invalidate. If you're building a **traditional web application**, you should **stick with sessions**.
+
+## Conclusion
+
+I hope this note has been helpful. Auth is a complex subject. I believe in the benefits of rolling your own auth if you're up to the challenge. However, it's completely reasonable to leverage an auth service like Auth0 if identity isn't a core part of your product and your security needs aren't highly specific.
+
+I hope this note has given you a good starting point to understand the subject. If you’d like to dive deeper, here are some resources that I recommend:
+
+- **[Tyler Clark's Identity 101: A JS Developer's Guide to App Security](https://www.youtube.com/watch?v=euKQWIEBYVU)**: My presentation at Austin's Remix Meetup was heavily inspired by this talk. I recommend it as a starting point for anyone looking to understand the fundamentals of auth.
+- **[The Copenhagen Book](https://thecopenhagenbook.com/)**: Many of the best practices I hinted at throughout this note are taken directly from this book. It's a great resource for anyone looking to dive deeper while remaining pragmatic about auth.
+- **[Web Authentication APIs](https://frontendmasters.com/courses/web-auth-apis/)**: A great course that covers the fundamentals of Web Authentication APIs. It's a good starting point for anyone looking to implement their own full-stack auth strategy.
+- **[Introduction to JSON Web Tokens](https://jwt.io/introduction)**: A comprehensive guide to JWTs. It focuses on signed tokens only, but that already covers 80% of JWT use cases.
+- **[Auth Protocols](https://auth0.com/docs/authenticate/protocols)**: Auth0’s documentation and guides on the most popular auth protocols.
+- **[The OAuth 2.0 Authorization Framework](https://datatracker.ietf.org/doc/html/rfc6749)**: The original specification for OAuth 2.0. It's a great read for anyone looking to understand the protocol in depth. Reading this and using it to implement your own resource and authorization servers—as well as a client—would be a fantastic way to internalize the protocol.
+- **[An Illustrated Guide to OAuth and OpenID Connect](https://www.youtube.com/watch?v=t18YB3xDfXI/)**: This video helped me grasp the nuances and differences between OAuth and OIDC. It provides a simple explanation that even newcomers to the subject should be able to follow.
+
+### Other resources worth checking out
+
+- **[Remix Auth](https://github.com/sergiodxa/remix-auth)**: A library that helps implement auth strategies in Remix. I love their declarative approach using auth strategies. The community has created several strategies that can be used here—I'm sure you'll find one that fits your needs. I bet there are similar libraries for other frameworks; I just haven’t looked.
+- **[Getting Started with Passkeys and WebAuthn](https://lucasamonrc.dev/posts/passkeys-talk)**: My talk at the UtahJS 2024 conference. I didn’t cover WebAuthn in this note, though I did in my Remix Meetup presentation. Since I already put out a good resource for those interested in learning more about it, I didn’t want to rehash it here. I will say this about Passkeys: My opinion on them has changed since this talk. I used to be more bullish about them. Today, I think they’re a great addition to the auth landscape, but they’re definitely not a silver bullet. In many real-world use cases, they can make the UX worse without adding much more security. This is a tradeoff you must consider when deciding if they’re a good fit for your use case. Awesome piece of technology, though, and very fun to talk about!

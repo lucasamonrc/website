@@ -1,25 +1,20 @@
 ---
-import { getCollection } from "astro:content";
+import { getCollection, getEntry } from "astro:content";
 import Root from "../../layouts/Root.astro";
 import PostEntry from "../../components/PostEntry.astro";
+import { render } from "astro:content";
 
-const posts = (await getCollection("blog")).sort(
+const posts = (await getCollection("posts")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
+
+const writingPage = await getEntry("pages", "writing");
+
+const { Content } = await render(writingPage!);
 ---
 
 <Root title="Writing | Lucas Castro">
-  <h2>Writing</h2>
-  <p>
-    Every now and then I feel compelled to publish some of my thoughts. They can
-    be about anything, really, but usually they are about my career,
-    programming, or the industry.
-  </p>
-
-  <p>
-    These posts don't have any regular cadence, they simply pop right out of my
-    head whenever I feel like it is a thought worth sharing.
-  </p>
+  <Content />
   {
     /* <p className="italic">
         Since August 2025 I've been releasing a weekly series called{" "}
@@ -39,7 +34,4 @@ const posts = (await getCollection("blog")).sort(
       ))
     }
   </ul>
-  <p>
-    <a href="/archive" class="text-sm font-light"> View all → </a>
-  </p>
 </Root>

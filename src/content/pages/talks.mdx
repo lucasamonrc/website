@@ -1,0 +1,26 @@
+---
+title: "Talks | Lucas Castro"
+updatedDate: 2025-08-02
+---
+
+import { TalkEntry } from "../../components/TalkEntry";
+import { TALKS } from "../../consts";
+
+## Talks
+
+I like to engage with the dev community thorugh talks and presentations. It is
+also a good way to share things I've learned and meet new people, so I try to
+give a talk or two every year. Here's a list of some of the talks I've given:
+
+<ul className="p-0">
+  {TALKS.map((talk, i) => (
+    <TalkEntry
+      key={i}
+      date={talk.date}
+      title={talk.title}
+      videoUrl={talk.videoUrl}
+      notesUrl={talk.notesUrl}
+      slidesUrl={talk.slidesUrl}
+    />
+  ))}
+</ul>
