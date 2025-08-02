@@ -1,7 +1,7 @@
 ---
 import { getCollection } from "astro:content";
 import Root from "../../layouts/Root.astro";
-import { PostEntry } from "../../components/PostEntry";
+import PostEntry from "../../components/PostEntry.astro";
 
 const posts = (await getCollection("blog")).sort(
   (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
@@ -32,9 +32,9 @@ const posts = (await getCollection("blog")).sort(
     {
       posts.map((post) => (
         <PostEntry
-          date={post.data.pubDate.toLocaleDateString()}
+          date={post.data.pubDate}
           title={post.data.title}
-          url={`/writing/${post.id}`}
+          slug={post.id}
         />
       ))
     }
