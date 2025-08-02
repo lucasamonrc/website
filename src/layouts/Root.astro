@@ -1,0 +1,25 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { NavigationTop, NavigationSide } from "../components/Navigation.tsx";
+import Footer from "../components/Footer";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+  </head>
+  <body class="max-w-5xl mx-auto w-full p-4">
+    <NavigationTop />
+    <div
+      class="sm:mt-20 sm:flex space-x-8 divide-x divide-neutral-300 items-start"
+    >
+      <NavigationSide />
+      <main class="w-full sm:w-2/3 prose">
+        <slot />
+      </main>
+    </div>
+    <Footer />
+  </body>
+</html>
