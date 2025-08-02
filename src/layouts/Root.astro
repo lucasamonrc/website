@@ -1,8 +1,9 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import { NavigationTop, NavigationSide } from "../components/Navigation.tsx";
 import Footer from "../components/Footer";
+import TopNavigation from "../components/TopNavigation.astro";
+import SideNavigation from "../components/SideNavigation.astro";
 
 interface Props {
   title?: string;
@@ -23,11 +24,11 @@ const { title, description, image } = Astro.props;
     />
   </head>
   <body class="max-w-5xl mx-auto w-full p-4">
-    <NavigationTop />
+    <TopNavigation />
     <div
       class="sm:mt-20 sm:flex space-x-8 divide-x divide-neutral-300 items-start"
     >
-      <NavigationSide />
+      <SideNavigation />
       <main class="w-full sm:w-2/3 prose">
         <slot />
       </main>

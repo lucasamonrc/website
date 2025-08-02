@@ -1,0 +1,11 @@
+---
+import { PAGES } from "../consts";
+import NavLink from "./NavLink.astro";
+---
+
+<header class="w-full flex flex-col space-y-4 items-start sm:hidden">
+  <h1 class="text-3xl">Lucas Castro</h1>
+  <nav class="w-full flex flex-wrap justify-start space-x-3 items-center mb-12">
+    {PAGES.map((page) => <NavLink href={page.to}>{page.label}</NavLink>)}
+  </nav>
+</header>
