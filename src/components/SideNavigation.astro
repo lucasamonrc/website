@@ -3,7 +3,7 @@ import { PAGES } from "../consts";
 import NavLink from "./NavLink.astro";
 ---
 
-<aside class="hidden sm:block text-right pr-8 w-1/3">
+<aside class="hidden sm:block text-right pr-8 w-1/3 sticky top-4">
   <h1 class="text-3xl">Lucas Castro</h1>
   <nav class="flex flex-col space-y-1 mt-4">
     {PAGES.map((page) => <NavLink href={page.to}>{page.label}</NavLink>)}
