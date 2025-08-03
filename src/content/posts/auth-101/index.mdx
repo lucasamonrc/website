@@ -4,9 +4,10 @@ description: "A Survey of Auth Concepts, Practices, and Strategies"
 pubDate: 2025-03-07
 ---
 
+import SimpleAuthImage from "./simple-auth.png";
 import NotionImage from "./notion-home.png";
 import OAuthImage from "./oauth2.svg";
-import SimpleAuthImage from "./simple-auth.png";
+import { Image } from "astro:assets";
 
 # Auth 101
 
@@ -106,7 +107,11 @@ Make this choice based on your security requirements and the user experience you
 
 For now, let's keep it simple. We'll consider implementing a basic auth strategy that relies on a knowledge factor with a password. How is that implemented? I want to avoid discussing password security; that topic is well-documented with plenty of available resources. Instead, I want to focus on the flow and how the building blocks fit together. Here's a simple design that I think is a good starting point:
 
-![Simple authentication diagram](./simple-auth.png)
+<Image
+  src={SimpleAuthImage}
+  alt=""
+  className="mx-auto max-w-lg w-full rounded-lg"
+/>
 
 Essentially, you need to collect the claim and factor (_email and password_), validate them, generate a token, bind it to a new session, and then return the token to the client. The server can prescribe to the client how the token should be stored, and in most cases, it will be in the form of a cookie. In some cases, the server will simply return the token, and the client will be responsible for storing it.
 
@@ -144,7 +149,11 @@ In the next section, we’ll cover slightly more complex strategies. As we do so
 
 I'm a [Notion](https://notion.so) user. I use it to take notes, plan my day, and manage my projects. I love it. Notion has this really nice home page in every workspace. It is a one-stop shop for all the content in the workspace, curated specifically for the user. The user can customize it further by adding blocks, filters, and more. This is how my Home page looks:
 
-![Lucas's Notion Home page](./notion-home.png)
+<Image
+  src={NotionImage}
+  alt="Lucas's notion workspace home"
+  className="mx-auto max-w-lg w-full rounded-lg"
+/>
 
 I like to keep it simple. The most important block to me is a quick overview of my calendar. I keep my schedule organized in Google Calendar, and Notion offers a way to view it right on the home page. How does it do that? From the title of this section, you can already guess—but I still want you to think about it. Pretend you know nothing about OAuth and try to figure out how to build a similar feature on your own.
 
@@ -152,7 +161,7 @@ In the past, this kind of feature—one service accessing protected resources fr
 
 OAuth was created as a better alternative to this. It is an **authorization** protocol—it has very little to do with authentication. OAuth prescribes how one service may access resources from another service. It does so by using tokens instead of user credentials. At a very high level, it works like this:
 
-![OAuth diagram (simplified)](./oauth2.svg)
+<Image src={OAuthImage} alt="" className="mx-auto max-w-lg w-full rounded-lg" />
 
 The session is managed by the **resource owner**—the entity that owns the resources being accessed. In this case, the resource owner is the user. The **client** is the service that wants to access the resources—Notion, for example. The **resource server**—the third-party service—is the service being accessed. In this case, the resource server is Google Calendar.
 
