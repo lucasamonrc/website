@@ -15,21 +15,14 @@ const { Content } = await render(writingPage!);
 
 <Root title="Writing | Lucas Castro">
   <Content />
-  {
-    /* <p className="italic">
-        Since August 2025 I've been releasing a weekly series called{" "}
-        <strong>Bookmarks</strong>. You can find it{" "}
-        <NavLink to="/bookmarks">here</NavLink>.
-      </p> */
-  }
   <h3>Recent</h3>
-  <ul class="p-0">
+  <ul class="pl-0">
     {
       posts.map((post) => (
         <PostEntry
           date={post.data.pubDate}
           title={post.data.title}
-          slug={post.id}
+          slug={"/writing/" + post.id}
         />
       ))
     }

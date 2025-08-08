@@ -14,7 +14,7 @@ export function TalkEntry({
   slidesUrl,
 }: TalkEntryProps) {
   return (
-    <li className="grid grid-cols-8 space-x-4">
+    <li className="grid grid-cols-8 space-x-4 pl-0">
       <span className="text-sm md:text-base font-light text-secondary col-span-2">
         {date}
       </span>

@@ -1,0 +1,20 @@
+---
+import { type CollectionEntry, getCollection, render } from "astro:content";
+import Root from "../../layouts/Root.astro";
+
+export async function getStaticPaths() {
+  const bookmarks = await getCollection("bookmarks");
+  return bookmarks.map((bookmark) => ({
+    params: { slug: bookmark.id },
+    props: bookmark,
+  }));
+}
+type Props = CollectionEntry<"bookmarks">;
+
+const bookmark = Astro.props;
+const { Content } = await render(bookmark);
+---
+
+<Root title={"Bookmarks #" + bookmark.data.issue.toString().padStart(2, "0")}>
+  <Content />
+</Root>

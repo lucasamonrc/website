@@ -8,7 +8,7 @@ interface Props {
 const { date, title, slug } = Astro.props;
 ---
 
-<li class="grid grid-cols-5 gap-x-2">
+<li class="grid grid-cols-5 gap-x-2 pl-0">
   <span class="font-light text-secondary"
     >{
       date.toLocaleDateString("en-US", {
@@ -18,7 +18,7 @@ const { date, title, slug } = Astro.props;
       })
     }</span
   >
-  <a href={`/writing/${slug}`} class="col-span-4">
+  <a href={slug} class="col-span-4">
     {title}
   </a>
 </li>

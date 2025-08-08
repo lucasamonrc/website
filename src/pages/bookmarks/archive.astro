@@ -1,0 +1,25 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Root from "../../layouts/Root.astro";
+import PostEntry from "../../components/PostEntry.astro";
+
+const bookmarks = (await getCollection("bookmarks")).sort(
+  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+);
+---
+
+<Root title="Bookmarks Archive | Lucas Castro">
+  <h2>Bookmarks Archive</h2>
+  <p>This is the archive of all my bookmarks.</p>
+  <ul class="pl-0">
+    {
+      bookmarks.map((bookmark) => (
+        <PostEntry
+          date={bookmark.data.pubDate}
+          title={"Issue #" + bookmark.data.issue.toString().padStart(2, "0")}
+          slug={"/bookmarks/" + bookmark.id}
+        />
+      ))
+    }
+  </ul>
+</Root>

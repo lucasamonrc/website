@@ -35,4 +35,13 @@ const misc = defineCollection({
     }),
 });
 
-export const collections = { posts, pages, misc };
+const bookmarks = defineCollection({
+  loader: glob({ base: "./src/content/bookmarks", pattern: "**/*.{md,mdx}" }),
+  schema: () =>
+    z.object({
+      issue: z.number(),
+      pubDate: z.coerce.date(),
+    }),
+});
+
+export const collections = { posts, pages, misc, bookmarks };
