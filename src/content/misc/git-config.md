@@ -1,5 +1,5 @@
 ---
-title: My .gitconfig,
+title: My .gitconfig
 pubDate: 2025-07-25
 updatedDate: 2025-08-02
 ---

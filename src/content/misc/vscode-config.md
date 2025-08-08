@@ -1,5 +1,5 @@
 ---
-title: My VSCode Settings,
+title: My VSCode Settings
 pubDate: 2025-07-25
 updatedDate: 2025-08-02
 ---

@@ -1,5 +1,5 @@
 ---
-title: Tips for Coding Problems and Interviews.
+title: Tips for Coding Problems and Interviews
 pubDate: 2025-07-25
 updatedDate: 2025-08-02
 ---
