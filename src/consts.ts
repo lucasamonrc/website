@@ -11,6 +11,7 @@ export const PAGES = [
   { to: "/writing", label: "writing" },
   { to: "/talks", label: "talks" },
   // { to: "/bookmarks", label: "bookmarks" },
+  // { to: "/projects", label: "tiny" },
   { to: "/misc", label: "misc" },
 ];
 
@@ -61,3 +62,5 @@ export const TALKS = [
     notesUrl: "/misc/learn-with-llms",
   },
 ];
+
+export const TINY_PROJECTS: { title: string; url: string }[] = [];

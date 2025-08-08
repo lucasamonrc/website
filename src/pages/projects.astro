@@ -1,0 +1,13 @@
+---
+import Root from "../layouts/Root.astro";
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+
+const projectsPage = await getEntry("pages", "projects");
+
+const { Content } = await render(projectsPage!);
+---
+
+<Root title="Tiny Projects | Lucas Castro">
+  <Content />
+</Root>
