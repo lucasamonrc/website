@@ -9,8 +9,8 @@ export const PAGES = [
   { to: "/", label: "about" },
   { to: "/work", label: "work" },
   { to: "/writing", label: "writing" },
+  { to: "/bookmarks", label: "bookmarks" },
   { to: "/talks", label: "talks" },
-  // { to: "/bookmarks", label: "bookmarks" },
   // { to: "/projects", label: "tiny" },
   { to: "/misc", label: "misc" },
 ];

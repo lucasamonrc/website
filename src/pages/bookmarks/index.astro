@@ -21,7 +21,7 @@ const { Content } = await render(bookmarksPage!);
       bookmarks.map((bookmark) => (
         <PostEntry
           date={bookmark.data.pubDate}
-          title={"Issue #" + bookmark.data.issue.toString().padStart(2, "0")}
+          title={"Bookmarks #" + bookmark.data.issue}
           slug={"/bookmarks/" + bookmark.id}
         />
       ))
