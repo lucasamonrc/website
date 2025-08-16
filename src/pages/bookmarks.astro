@@ -1,0 +1,13 @@
+---
+import { getEntry } from "astro:content";
+import { render } from "astro:content";
+import Root from "../layouts/Root.astro";
+
+const bookmarksPage = await getEntry("pages", "bookmarks");
+
+const { Content } = await render(bookmarksPage!);
+---
+
+<Root title="Bookmarks | Lucas Castro">
+  <Content />
+</Root>

@@ -7,7 +7,6 @@ const posts = defineCollection({
     z.object({
       title: z.string(),
       description: z.string(),
-      // Transform string to Date object
       pubDate: z.coerce.date(),
       updatedDate: z.coerce.date().optional(),
       heroImage: image().optional(),
@@ -35,13 +34,4 @@ const misc = defineCollection({
     }),
 });
 
-const bookmarks = defineCollection({
-  loader: glob({ base: "./src/content/bookmarks", pattern: "**/*.{md,mdx}" }),
-  schema: () =>
-    z.object({
-      issue: z.number(),
-      pubDate: z.coerce.date(),
-    }),
-});
-
-export const collections = { posts, pages, misc, bookmarks };
+export const collections = { posts, pages, misc };

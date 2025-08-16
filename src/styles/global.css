@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: corporate --default, business --prefersdark;
+  themes: nord --default, dracula --prefersdark;
 }
 
 @plugin "@tailwindcss/typography";
@@ -17,4 +17,16 @@ a.active {
 
 a {
   @apply link link-accent transition-colors underline-offset-4;
+}
+
+.bookmarks-prose > h2:first {
+  @apply !mt-0;
+}
+
+.bookmarks-prose > ul {
+  @apply prose-sm list-none pl-0;
+}
+
+.bookmarks-prose > ul > li {
+  @apply pl-0;
 }

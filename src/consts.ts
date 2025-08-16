@@ -8,11 +8,11 @@ export const SITE_DESCRIPTION =
 export const PAGES = [
   { to: "/", label: "about" },
   { to: "/work", label: "work" },
-  { to: "/writing", label: "writing" },
-  { to: "/bookmarks", label: "bookmarks" },
-  { to: "/talks", label: "talks" },
   // { to: "/projects", label: "tiny" },
+  { to: "/writing", label: "writing" },
+  { to: "/talks", label: "talks" },
   { to: "/misc", label: "misc" },
+  { to: "/bookmarks", label: "bookmarks" },
 ];
 
 export const WORK = [
