@@ -2,8 +2,8 @@
 
 @plugin "daisyui" {
 	themes:
-		nord --default,
-		dracula --prefersdark;
+		corporate --default,
+		business --prefersdark;
 }
 
 @plugin "@tailwindcss/typography";
@@ -19,7 +19,7 @@ a.active {
 }
 
 a {
-	@apply link link-accent underline-offset-4 transition-colors;
+	@apply link link-primary underline-offset-4 transition-colors;
 }
 
 a.secondary-link {
