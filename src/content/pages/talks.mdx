@@ -12,15 +12,15 @@ I like to engage with the dev community thorugh talks and presentations. It is
 also a good way to share things I've learned and meet new people, so I try to
 give a talk or two every year. Here's a list of some of the talks I've given:
 
-<ul className="p-0">
-  {TALKS.map((talk, i) => (
-    <TalkEntry
-      key={i}
-      date={talk.date}
-      title={talk.title}
-      videoUrl={talk.videoUrl}
-      notesUrl={talk.notesUrl}
-      slidesUrl={talk.slidesUrl}
-    />
-  ))}
-</ul>
+<section class="flex flex-col space-y-4">
+	{TALKS.map((talk, i) => (
+		<TalkEntry
+			key={i}
+			date={talk.date}
+			title={talk.title}
+			videoUrl={talk.videoUrl}
+			notesUrl={talk.notesUrl}
+			slidesUrl={talk.slidesUrl}
+		/>
+	))}
+</section>

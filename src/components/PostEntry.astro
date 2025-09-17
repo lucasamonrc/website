@@ -1,25 +1,25 @@
 ---
 interface Props {
-  date: Date;
-  title: string;
-  slug: string;
+	date: Date;
+	title: string;
+	slug: string;
 }
 
 const { date, title, slug } = Astro.props;
 ---
 
-<li class="grid grid-cols-5 gap-x-2 pl-0">
-  <span class="font-light text-secondary"
-    >{
-      date.toLocaleDateString("en-US", {
-        year: "numeric",
-        day: "2-digit",
-        month: "short",
-        timeZone: "UTC",
-      })
-    }</span
-  >
-  <a href={slug} class="col-span-4">
-    {title}
-  </a>
-</li>
+<article class="flex flex-col gap-x-4">
+	<span class="text-secondary text-xs"
+		>{
+			date.toLocaleDateString("en-US", {
+				year: "numeric",
+				day: "2-digit",
+				month: "short",
+				timeZone: "UTC",
+			})
+		}</span
+	>
+	<a>
+		{title}
+	</a>
+</article>

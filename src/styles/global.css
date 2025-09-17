@@ -1,32 +1,39 @@
 @import "tailwindcss";
 
 @plugin "daisyui" {
-  themes: nord --default, dracula --prefersdark;
+	themes:
+		nord --default,
+		dracula --prefersdark;
 }
 
 @plugin "@tailwindcss/typography";
 
 @theme {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+	--font-sans:
+		"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 a.active {
-  @apply font-semibold link-secondary no-underline;
+	@apply link-secondary font-semibold no-underline;
 }
 
 a {
-  @apply link link-accent transition-colors underline-offset-4;
+	@apply link link-accent underline-offset-4 transition-colors;
+}
+
+a.secondary-link {
+	@apply link link-secondary underline-offset-4 transition-colors;
 }
 
 .bookmarks-prose > h2:first {
-  @apply !mt-0;
+	@apply !mt-0;
 }
 
 .bookmarks-prose > ul {
-  @apply prose-sm list-none pl-0;
+	@apply prose-sm list-none pl-0;
 }
 
 .bookmarks-prose > ul > li {
-  @apply pl-0;
+	@apply pl-0;
 }

@@ -5,7 +5,7 @@ import PostEntry from "../../components/PostEntry.astro";
 import { render } from "astro:content";
 
 const posts = (await getCollection("posts")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
 );
 
 const writingPage = await getEntry("pages", "writing");
@@ -14,17 +14,17 @@ const { Content } = await render(writingPage!);
 ---
 
 <Root title="Writing | Lucas Castro">
-  <Content />
-  <h3>Recent</h3>
-  <ul class="pl-0">
-    {
-      posts.map((post) => (
-        <PostEntry
-          date={post.data.pubDate}
-          title={post.data.title}
-          slug={"/writing/" + post.id}
-        />
-      ))
-    }
-  </ul>
+	<Content />
+	<h3>Recent</h3>
+	<secion class="flex flex-col space-y-4">
+		{
+			posts.map((post) => (
+				<PostEntry
+					date={post.data.pubDate}
+					title={post.data.title}
+					slug={"/writing/" + post.id}
+				/>
+			))
+		}
+	</secion>
 </Root>

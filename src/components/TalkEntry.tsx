@@ -1,38 +1,37 @@
 interface TalkEntryProps {
-  date: string;
-  title: string;
-  videoUrl: string;
-  notesUrl?: string;
-  slidesUrl?: string;
+	date: string;
+	title: string;
+	videoUrl: string;
+	notesUrl?: string;
+	slidesUrl?: string;
 }
 
 export function TalkEntry({
-  date,
-  title,
-  videoUrl,
-  notesUrl,
-  slidesUrl,
+	date,
+	title,
+	videoUrl,
+	notesUrl,
+	slidesUrl,
 }: TalkEntryProps) {
-  return (
-    <li className="grid grid-cols-8 space-x-4 pl-0">
-      <span className="text-sm md:text-base font-light text-secondary col-span-2">
-        {date}
-      </span>
-      <a href={videoUrl} className="col-span-5">
-        {title}
-      </a>
+	return (
+		<article className="flex flex-col">
+			<span className="text-secondary text-xs">{date}</span>
 
-      {notesUrl && (
-        <a href={notesUrl} className="text-sm font-normal">
-          Notes
-        </a>
-      )}
-
-      {slidesUrl && (
-        <a href={slidesUrl} className="text-sm font-normal">
-          Slides
-        </a>
-      )}
-    </li>
-  );
+			<span className="flex items-baseline gap-x-4">
+				<a href={videoUrl} className="col-span-5">
+					{title}
+				</a>
+				{notesUrl && (
+					<a href={notesUrl} className="secondary-link text-xs">
+						Notes
+					</a>
+				)}
+				{slidesUrl && (
+					<a href={slidesUrl} className="secondary-link text-xs">
+						Slides
+					</a>
+				)}
+			</span>
+		</article>
+	);
 }
