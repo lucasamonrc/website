@@ -47,7 +47,7 @@ export const TALKS = [
 		date: "Sep. 12, 2025",
 		title: "Managing a State of Distrust",
 		videoUrl: "https://www.youtube.com/watch?v=ZBVpyTUw1ZE",
-		notesUrl: "https://lucasamonrc.notion.site/Managing-a-State-of-Distrust-24d0becdfd4c8055a45ddb3d3eca4104"
+		notesUrl: "/misc/state-of-distrust",
 	},
 	{
 		date: "Mar. 5, 2025",
