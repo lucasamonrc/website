@@ -5,7 +5,7 @@ import PostEntry from "../../components/PostEntry.astro";
 import { render } from "astro:content";
 
 const posts = (await getCollection("posts")).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const writingPage = await getEntry("pages", "writing");

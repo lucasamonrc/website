@@ -6,9 +6,9 @@ import SideNavigation from "../components/SideNavigation.astro";
 import Footer from "../components/Footer.astro";
 
 interface Props {
-  title?: string;
-  description?: string;
-  image?: ImageMetadata;
+	title?: string;
+	description?: string;
+	image?: ImageMetadata;
 }
 
 const { title, description, image } = Astro.props;
@@ -16,23 +16,23 @@ const { title, description, image } = Astro.props;
 
 <!doctype html>
 <html lang="en">
-  <head>
-    <BaseHead
-      title={title || SITE_TITLE}
-      description={description || SITE_DESCRIPTION}
-      image={image}
-    />
-  </head>
-  <body class="max-w-5xl mx-auto w-full p-4">
-    <TopNavigation />
-    <div
-      class="sm:mt-20 sm:flex space-x-8 divide-x divide-neutral-300 items-start"
-    >
-      <SideNavigation />
-      <main class="w-full sm:w-2/3 prose">
-        <slot />
-      </main>
-    </div>
-    <Footer />
-  </body>
+	<head>
+		<BaseHead
+			title={title || SITE_TITLE}
+			description={description || SITE_DESCRIPTION}
+			image={image}
+		/>
+	</head>
+	<body class="max-w-5xl mx-auto w-full p-4">
+		<TopNavigation />
+		<div
+			class="sm:mt-20 sm:flex space-x-8 divide-x divide-neutral-300 items-start"
+		>
+			<SideNavigation />
+			<main class="w-full sm:w-2/3 prose">
+				<slot />
+			</main>
+		</div>
+		<Footer />
+	</body>
 </html>

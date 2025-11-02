@@ -2,28 +2,24 @@
 
 @plugin "daisyui" {
 	themes:
-		corporate --default,
-		business --prefersdark;
+		lofi --default,
+		black --prefersdark;
 }
 
 @plugin "@tailwindcss/typography";
 
 @theme {
 	--font-sans:
-		"Inter", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+		"Figtree", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
 a.active {
-	@apply link-secondary font-semibold no-underline;
+	@apply pointer-events-none font-semibold no-underline;
 }
 
 a {
-	@apply link link-primary underline-offset-4 transition-colors;
-}
-
-a.secondary-link {
-	@apply link link-secondary underline-offset-4 transition-colors;
+	@apply link underline-offset-4 transition-opacity hover:opacity-75;
 }
 
 .bookmarks-prose > h2:first {

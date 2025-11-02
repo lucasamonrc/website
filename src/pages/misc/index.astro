@@ -4,7 +4,7 @@ import Root from "../../layouts/Root.astro";
 import { render } from "astro:content";
 
 const misc = (await getCollection("misc")).sort(
-  (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf()
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
 const miscPage = await getEntry("pages", "misc");
@@ -13,14 +13,14 @@ const { Content } = await render(miscPage!);
 ---
 
 <Root title="Misc | Lucas Castro">
-  <Content />
-  <ul>
-    {
-      misc.map((item) => (
-        <li>
-          <a href={`/misc/${item.id}`}>{item.data.title}</a>
-        </li>
-      ))
-    }
-  </ul>
+	<Content />
+	<ul>
+		{
+			misc.map((item) => (
+				<li>
+					<a href={`/misc/${item.id}`}>{item.data.title}</a>
+				</li>
+			))
+		}
+	</ul>
 </Root>

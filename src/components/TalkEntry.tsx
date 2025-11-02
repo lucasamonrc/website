@@ -22,12 +22,12 @@ export function TalkEntry({
 					{title}
 				</a>
 				{notesUrl && (
-					<a href={notesUrl} className="secondary-link text-xs">
+					<a href={notesUrl} className="text-xs">
 						Notes
 					</a>
 				)}
 				{slidesUrl && (
-					<a href={slidesUrl} className="secondary-link text-xs">
+					<a href={slidesUrl} className="text-xs">
 						Slides
 					</a>
 				)}
