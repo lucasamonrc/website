@@ -6,13 +6,10 @@ export const SITE_DESCRIPTION =
 	"Hello, there! I'm Lucas. Welcome to my personal website. You can learn more about me, my work, and the things I care about here. I talk about programming, careers, and the tech industry.";
 
 export const PAGES = [
-	{ to: "/", label: "about" },
 	{ to: "/work", label: "work" },
-	// { to: "/projects", label: "tiny" },
 	{ to: "/writing", label: "writing" },
 	{ to: "/talks", label: "talks" },
 	{ to: "/misc", label: "misc" },
-	{ to: "/bookmarks", label: "bookmarks" },
 ];
 
 export const WORK = [
@@ -47,26 +44,20 @@ export const TALKS = [
 		date: "Sep. 12, 2025",
 		title: "Managing a State of Distrust",
 		videoUrl: "https://www.youtube.com/watch?v=ZBVpyTUw1ZE",
-		notesUrl: "/misc/state-of-distrust",
 	},
 	{
 		date: "Mar. 5, 2025",
 		title: "Auth 101",
 		videoUrl: "https://www.youtube.com/watch?v=Z8iFDkBRfWI",
-		notesUrl: "/writing/auth-101",
 	},
 	{
 		date: "Sep. 13, 2024",
 		title: "Getting Started with Passkeys and WebAuthn",
 		videoUrl: "https://www.youtube.com/watch?v=sSxibbZ3GL4",
-		slidesUrl: "https://slides.com/lucasamonrc/deck-1683a2/scroll",
 	},
 	{
 		date: "Sep. 15, 2023",
 		title: "Using LLMs to Learn a New Programming Language",
 		videoUrl: "https://www.youtube.com/watch?v=BKbXrQ0z-FY",
-		notesUrl: "/misc/learn-with-llms",
 	},
 ];
-
-export const TINY_PROJECTS: { title: string; url: string }[] = [];

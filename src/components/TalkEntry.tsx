@@ -6,32 +6,11 @@ interface TalkEntryProps {
 	slidesUrl?: string;
 }
 
-export function TalkEntry({
-	date,
-	title,
-	videoUrl,
-	notesUrl,
-	slidesUrl,
-}: TalkEntryProps) {
+export function TalkEntry({ date, title, videoUrl }: TalkEntryProps) {
 	return (
 		<article className="flex flex-col">
-			<span className="text-secondary text-xs">{date}</span>
-
-			<span className="flex items-baseline gap-x-4">
-				<a href={videoUrl} className="col-span-5">
-					{title}
-				</a>
-				{notesUrl && (
-					<a href={notesUrl} className="text-xs">
-						Notes
-					</a>
-				)}
-				{slidesUrl && (
-					<a href={slidesUrl} className="text-xs">
-						Slides
-					</a>
-				)}
-			</span>
+			<span className="text-xs">{date}</span>
+			<a href={videoUrl}>{title}</a>
 		</article>
 	);
 }

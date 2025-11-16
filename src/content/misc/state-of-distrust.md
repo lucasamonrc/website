@@ -4,9 +4,9 @@ pubDate: 2025-09-12
 updatedDate: 2025-09-12
 ---
 
-# Managing a State of Distrust
+## Managing a State of Distrust
 
-## Introduction
+### Introduction
 
 ---
 
@@ -14,7 +14,7 @@ I believe that well-rounded engineers should understand the key parts of the sys
 
 Today I want to share the mental model I use to reason about auth. My hypothesis is simple: Auth is about managing distrust, and the way we manage distrust is by leveraging sessions, tokens, and exchanges.
 
-## State
+### State
 
 ---
 
@@ -22,7 +22,7 @@ State is a snapshot of data. It defines the characteristics of an entity at a sp
 
 Every application must manage state. Most applications must implement state persistence. Out of these, a large subset must keep that data secure. In this case, the default is to distrust all requests to access the data, unless the client can prove that it should have access to it. This is the authentication challenge: creating and managing trust while maintaining distrust as the default.
 
-## Trust
+### Trust
 
 ---
 
@@ -34,31 +34,31 @@ A server in a state of distrust will doubt every request, so the client must do 
 - The client established a trustworthy relationship in the past, and has evidence of it.
 - The client is vouched for by another trustworthy entity that we can verify with.
 
-## The Pillars
+### The Pillars
 
 ---
 
 Authentication is simply the strategy, the process, on how to achieve trust between the client and the server. I base this strategy—and therefore, trust—on three fundamental pillars.
 
-### **Sessions**
+#### **Sessions**
 
 The authenticated relationship between client and server, along with the data that describes it. **Sessions** are how we represent trusted state; they're the data structures that track authenticated relationships. Sessions don't store your actual application data, but rather the "relationship data". Who the user is, when they authenticated, when the session expires, and how to verify it's legitimate.
 
-### **Tokens**
+#### **Tokens**
 
 The \***\*tangible representation of a session. **Tokens\*\* can either be opaque (e.g., a secure random string) or self-contained (e.g., a JWT). Clients exchange tokens for data, and servers use them to verify/validate that the client is authenticated and has access to that data.
 
-### **Exchanges**
+#### **Exchanges**
 
 The communication patterns that establish and verify trust between client and server. **Exchanges** typically follow a two-step pattern: first, the client provides proof of identity (credentials) and receives a token in return; then, for each subsequent request, the client presents the token and the server grants access after validating it represents a valid session.
 
-## Examples
+### Examples
 
 ---
 
 Now let's see how these three pillars work in practice. We'll look at two popular examples, and I'll leave the third as an exercise.
 
-### **Email and Password Authentication**
+#### **Email and Password Authentication**
 
 When a client submits their email and password, the server validates these credentials against stored user data. Upon successful validation, the server creates a **session**.
 
@@ -100,7 +100,7 @@ sequenceDiagram
     S-->>C: {accessToken: "xyz789abc", refreshToken: "refresh_ghi123def"}
 ```
 
-### **OpenID Connect**
+#### **OpenID Connect**
 
 When a client wants to authenticate via OpenID Connect, they're redirected to an identity provider (like Google or Auth0). After successfully authenticating with the provider, the server receives a **session** in the form of an authorization code that represents the client's authenticated state with the provider.
 
@@ -147,7 +147,7 @@ sequenceDiagram
     #S-->>C: Continue with new tokens
 ```
 
-### **Passkeys (WebAuthn)**
+#### **Passkeys (WebAuthn)**
 
 I'll leave Passkeys as an exercise for you. Using the **sessions**, **tokens**, and **exchanges** framework we've discussed, try reasoning through how authentication with Passkeys would work. Here are a few questions to think about:
 
@@ -177,7 +177,7 @@ If you don't know how WebAuthn credentials and Passkeys work, here are some usef
 - https://fidoalliance.org/passkeys/
 - https://www.w3.org/TR/webauthn-2/
 
-## Closing
+### Closing
 
 ---
 
@@ -189,12 +189,10 @@ My opinion is that if you're building a real product that must generate revenue,
 
 Thank you.
 
-## References
+### References
 
 ---
 
-https://lucasacastro.com/writing/auth-101/
-
-https://thecopenhagenbook.com/
-
-https://www.youtube.com/watch?v=euKQWIEBYVU
+- https://lucasacastro.com/writing/auth-101/
+- https://thecopenhagenbook.com/
+- https://www.youtube.com/watch?v=euKQWIEBYVU

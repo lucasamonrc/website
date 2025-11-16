@@ -3,7 +3,7 @@ title: "Lucas Castro"
 updatedDate: 2025-08-02
 ---
 
-<p className="mt-0">Hello, there! I'm Lucas.</p>
+Hello, there! I'm Lucas.
 
 I work as software engineer at [Cloudflare](https://www.cloudflare.com). Previously I was a founding engineer at [Trinsic](https://trinsic.id), and before that I was attending school at [BYU](https://byu.edu) in Provo, UT.
 

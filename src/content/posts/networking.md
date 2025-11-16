@@ -4,7 +4,7 @@ description: Networking sucks, rarely works, and it isn't a serious job-hunting 
 pubDate: 2025-08-18
 ---
 
-# "Networking" is terrible advice
+## "Networking" is terrible advice
 
 Yet it is probably the most common advice people give when it comes to job hunting. It is bad advice because it is vague and based on a selfish premise: _"what can you offer me?"_ You **must** trade something valuable to get something valuable in return. A good job opportunity, a referral, is extremely valuable. To earn it, you must be offering something of equal value in return.
 

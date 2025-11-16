@@ -4,7 +4,7 @@ description: Wisdom separates adepts from experts
 pubDate: 2025-10-14
 ---
 
-# About Knowledge, Intelligence, and Wisdom
+## About Knowledge, Intelligence, and Wisdom
 
 I’ve been thinking about **expertise** lately. Two great resources that helped expand some of my thinking on this were Kathy Sierra’s talk [_Making Badass Developers_](https://www.youtube.com/watch?v=FKTxC9pl-WM) and Daniel Kahneman’s book [_Thinking Fast and Slow_](https://www.goodreads.com/book/show/11468377-thinking-fast-and-slow).
 

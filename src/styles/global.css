@@ -2,8 +2,8 @@
 
 @plugin "daisyui" {
 	themes:
-		lofi --default,
-		black --prefersdark;
+		corporate --default,
+		business --prefersdark;
 }
 
 @plugin "@tailwindcss/typography";
@@ -14,22 +14,6 @@
 		"Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-a.active {
-	@apply pointer-events-none font-semibold no-underline;
-}
-
 a {
-	@apply link underline-offset-4 transition-opacity hover:opacity-75;
-}
-
-.bookmarks-prose > h2:first {
-	@apply !mt-0;
-}
-
-.bookmarks-prose > ul {
-	@apply prose-sm list-none pl-0;
-}
-
-.bookmarks-prose > ul > li {
-	@apply pl-0;
+	@apply underline-offset-4;
 }

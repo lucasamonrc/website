@@ -1,9 +1,7 @@
 ---
 import BaseHead from "../components/BaseHead.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
-import TopNavigation from "../components/TopNavigation.astro";
-import SideNavigation from "../components/SideNavigation.astro";
-import Footer from "../components/Footer.astro";
+import Navigation from "../components/Navigation.astro";
 
 interface Props {
 	title?: string;
@@ -23,16 +21,10 @@ const { title, description, image } = Astro.props;
 			image={image}
 		/>
 	</head>
-	<body class="max-w-5xl mx-auto w-full p-4">
-		<TopNavigation />
-		<div
-			class="sm:mt-20 sm:flex space-x-8 divide-x divide-neutral-300 items-start"
-		>
-			<SideNavigation />
-			<main class="w-full sm:w-2/3 prose">
-				<slot />
-			</main>
-		</div>
-		<Footer />
+	<body class="max-w-5xl mx-auto w-full px-8 py-16">
+		<main class="w-full md:w-2/3 prose mx-auto mt-0 md:mt-16">
+			<Navigation />
+			<slot />
+		</main>
 	</body>
 </html>

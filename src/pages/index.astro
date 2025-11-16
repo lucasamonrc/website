@@ -1,7 +1,5 @@
 ---
 import Root from "../layouts/Root.astro";
-import MeImage from "../assets/me.jpg";
-import { Image } from "astro:assets";
 import { getEntry } from "astro:content";
 import { render } from "astro:content";
 
@@ -11,10 +9,5 @@ const { Content } = await render(aboutPage!);
 ---
 
 <Root>
-	<Image
-		src={MeImage}
-		alt="A picture of me (Lucas)"
-		class="w-32 h-32 rounded-lg shadow-sm float-start mr-6 !my-0"
-	/>
 	<Content />
 </Root>
