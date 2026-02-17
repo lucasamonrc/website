@@ -6,7 +6,6 @@ updatedDate: 2025-08-02
 tags: ["ai", "learning"]
 ---
 
-## Using LLMs to Learn a New Programming Language
 
 > The main benefit I've seen from using Copilot Chat is the decreased feeling of "loneliness" when learning a new language. The chat feature does feel more of a "copiloting" experience, as if I was pair programming with someone. Here are some practical dos and don'ts I came up with when integrating copilot chat in my learning process.
 

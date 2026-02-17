@@ -3,7 +3,7 @@
 
 export const SITE_TITLE = "Lucas Castro";
 export const SITE_DESCRIPTION =
-	"Software engineer at Cloudflare. I write about programming, careers, and the tech industry.";
+	"Husband, dad, latter-day saint, and programmer. I like write code and sometimes words. 🇧🇷 🇺🇸";
 
 export const PAGES = [
 	{ to: "/writing", label: "writing" },
@@ -15,46 +15,46 @@ export const WORK = [
 		position: "Systems Engineer",
 		company: "Cloudflare",
 		companyUrl: "https://www.cloudflare.com",
-		range: "jul 2025-present",
+		range: "July 2025 — Present",
 	},
 	{
 		position: "Founding Engineer",
 		company: "Trinsic",
 		companyUrl: "https://trinsic.id",
-		range: "feb 2023-jul 2025",
+		range: "February 2023 — July 2025",
 	},
 	{
 		position: "Engineering Intern",
 		company: "Pluralsight",
 		companyUrl: "https://www.pluralsight.com",
-		range: "may 2022-aug 2022",
+		range: "May 2022 — August 2022",
 	},
 	{
 		position: "Programmer",
 		company: "Utah County Gov.",
 		companyUrl: "https://utahcounty.gov",
-		range: "jun 2020-aug 2021",
+		range: "June 2020 — August 2021",
 	},
 ];
 
 export const TALKS = [
 	{
-		date: "Sep. 12, 2025",
+		date: "September 12, 2025",
 		title: "Managing a State of Distrust",
 		videoUrl: "https://www.youtube.com/watch?v=ZBVpyTUw1ZE",
 	},
 	{
-		date: "Mar. 5, 2025",
+		date: "March 5, 2025",
 		title: "Auth 101",
 		videoUrl: "https://www.youtube.com/watch?v=Z8iFDkBRfWI",
 	},
 	{
-		date: "Sep. 13, 2024",
+		date: "September 13, 2024",
 		title: "Getting Started with Passkeys and WebAuthn",
 		videoUrl: "https://www.youtube.com/watch?v=sSxibbZ3GL4",
 	},
 	{
-		date: "Sep. 15, 2023",
+		date: "September 15, 2023",
 		title: "Using LLMs to Learn a New Programming Language",
 		videoUrl: "https://www.youtube.com/watch?v=BKbXrQ0z-FY",
 	},

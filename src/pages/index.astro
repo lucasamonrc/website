@@ -13,7 +13,6 @@ const recentPosts = posts.slice(0, 5);
 const socials = [
 	{ label: "GitHub", href: "https://github.com/lucasamonrc" },
 	{ label: "LinkedIn", href: "https://www.linkedin.com/in/lucasamonrc" },
-	{ label: "Twitter", href: "https://twitter.com/lucasamoncastro" },
 	{ label: "Email", href: "mailto:hello@lucasacastro.com" },
 ];
 ---
@@ -35,25 +34,25 @@ const socials = [
 				>
 					Lucas Castro
 				</h1>
-				<p
-					class="text-sm"
-					style="color: var(--color-text-secondary);"
-				>
+				<p class="text-sm" style="color: var(--color-text-secondary);">
 					Systems Engineer at Cloudflare
 				</p>
 			</div>
 		</div>
 		<p class="mb-4 leading-relaxed" style="color: var(--color-text);">
-			I write about programming, careers, and the tech industry. Previously
-			a founding engineer at <a href="https://trinsic.id">Trinsic</a>,
-			CS graduate from <a href="https://byu.edu">BYU</a>.
+			Husband, dad, latter-day saint, and programmer. I like write code
+			and sometimes words. Previously a founding engineer at <a
+				href="https://trinsic.id">Trinsic</a
+			>, CS graduate from <a href="https://byu.edu">BYU</a>.
 		</p>
 		<nav class="flex gap-4">
 			{
 				socials.map((s) => (
 					<a
 						href={s.href}
-						target={s.href.startsWith("http") ? "_blank" : undefined}
+						target={
+							s.href.startsWith("http") ? "_blank" : undefined
+						}
 						rel={
 							s.href.startsWith("http")
 								? "noopener noreferrer"
