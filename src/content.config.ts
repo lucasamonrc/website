@@ -14,14 +14,4 @@ const posts = defineCollection({
 		}),
 });
 
-const pages = defineCollection({
-	loader: glob({ base: "./src/content/pages", pattern: "**/*.{md,mdx}" }),
-	schema: () =>
-		z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			updatedDate: z.coerce.date(),
-		}),
-});
-
-export const collections = { posts, pages };
+export const collections = { posts };
