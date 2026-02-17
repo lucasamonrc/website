@@ -6,7 +6,8 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-	class="mb-12 flex w-full items-center justify-between border-b border-[var(--color-border)] pb-4 dark:border-[var(--color-border-dark)]"
+	class="mb-12 flex w-full items-center justify-between border-b pb-4"
+	style="border-color: var(--color-border);"
 >
 	<a
 		class="text-lg font-semibold tracking-tight no-underline"
@@ -24,9 +25,7 @@ const currentPath = Astro.url.pathname;
 						href={page.to}
 						class:list={[
 							"text-sm no-underline transition-colors",
-							isActive
-								? "font-medium"
-								: "hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)]",
+							isActive ? "font-medium" : "",
 						]}
 						style={
 							isActive
