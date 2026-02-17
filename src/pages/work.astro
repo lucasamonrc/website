@@ -1,13 +1,116 @@
 ---
 import Root from "../layouts/Root.astro";
-import { getEntry } from "astro:content";
-import { render } from "astro:content";
-
-const workPage = await getEntry("pages", "work");
-
-const { Content } = await render(workPage!);
+import { WORK, TALKS } from "../consts";
 ---
 
 <Root title="Work | Lucas Castro">
-	<Content />
+	<section class="mb-12">
+		<h1
+			class="mb-2 text-2xl font-bold tracking-tight"
+			style="color: var(--color-text);"
+		>
+			Work
+		</h1>
+		<p
+			class="text-sm leading-relaxed"
+			style="color: var(--color-text-secondary);"
+		>
+			I do my best work in fast-paced, cross-functional teams, and I like
+			to own my projects end-to-end.
+		</p>
+	</section>
+
+	<section class="mb-12">
+		<div class="prose max-w-none">
+			<p>
+				I work as a software engineer at <a
+					href="https://www.cloudflare.com">Cloudflare</a
+				> in the Data team. We're responsible for building and maintaining
+				Cloudflare's internal data platform, and we partner with teams across
+				the organization to support their data needs. Currently, I'm working
+				on improving our research and connectivity platform to help our go-to-market
+				teams obtain actionable insights during prospect research.
+			</p>
+			<p>
+				Previously, I was one of <a href="https://trinsic.id"
+					>Trinsic's</a
+				> founding engineers. Trinsic's platform helps businesses verify
+				users more securely and quickly by connecting them to digital IDs.
+			</p>
+			<p>
+				Before that, I was attending school at <a href="https://byu.edu"
+					>BYU</a
+				>, and I graduated with a degree in Computer Science in 2023.
+				During that time I took on several programming part-time jobs and
+				internships, most notably at <a href="https://pluralsight.com"
+					>Pluralsight</a
+				> and <a href="https://utahcounty.gov">Utah County Government</a
+				>.
+			</p>
+		</div>
+	</section>
+
+	<section class="mb-16">
+		<h2
+			class="mb-6 text-sm font-medium uppercase tracking-wide"
+			style="color: var(--color-text-secondary);"
+		>
+			Experience
+		</h2>
+		<div class="flex flex-col gap-4">
+			{
+				WORK.map((work) => (
+					<div class="flex items-baseline justify-between gap-4">
+						<div>
+							<span
+								class="font-medium"
+								style="color: var(--color-text);"
+							>
+								{work.position}
+							</span>
+							<span style="color: var(--color-text-secondary);">
+								{" "}
+								at{" "}
+							</span>
+							<a href={work.companyUrl} class="text-sm">
+								{work.company}
+							</a>
+						</div>
+						<span
+							class="shrink-0 text-sm"
+							style="color: var(--color-text-secondary);"
+						>
+							{work.range}
+						</span>
+					</div>
+				))
+			}
+		</div>
+	</section>
+
+	<section>
+		<h2
+			class="mb-6 text-sm font-medium uppercase tracking-wide"
+			style="color: var(--color-text-secondary);"
+		>
+			Talks
+		</h2>
+		<div class="flex flex-col gap-4">
+			{
+				TALKS.map((talk) => (
+					<div class="flex items-baseline justify-between gap-4">
+						<a href={talk.videoUrl} class="font-medium text-sm">
+							{talk.title}
+						</a>
+						<span
+							class="shrink-0 text-sm"
+							style="color: var(--color-text-secondary);"
+						>
+							{talk.date}
+						</span>
+					</div>
+				))
+			}
+		</div>
+	</section>
 </Root>
