@@ -5,7 +5,6 @@ pubDate: 2025-09-12
 tags: ["auth", "security", "resources"]
 ---
 
-## Resources for Learning Auth
 
 If you have an interest on internet identity, security, and authentication, the resources below have been extremely helpful to me. I hope that they can be helpful to you too.
 

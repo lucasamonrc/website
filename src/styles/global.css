@@ -22,8 +22,8 @@
 }
 
 :root.dark {
-	--color-bg: #0a0a0a;
-	--color-bg-secondary: #1a1a1a;
+	--color-bg: #161616;
+	--color-bg-secondary: #222222;
 	--color-text: #e5e7eb;
 	--color-text-secondary: #9ca3af;
 	--color-border: #262626;

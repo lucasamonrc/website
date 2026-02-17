@@ -6,7 +6,6 @@ updatedDate: 2025-08-02
 tags: ["career", "interviews"]
 ---
 
-## Tips for Coding Problems and Interviews
 
 You only really need one _good_ course on data structures and algorithms, and there isn't a lack of supply of free and paid options around the web. This list contains resources I actually tried and I helped me the most (none free). Just pick any resource you can find and stick with it.
 
