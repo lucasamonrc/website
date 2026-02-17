@@ -1,7 +1,8 @@
 ---
 title: Resources for Learning Auth
+description: A curated collection of the best resources for understanding internet identity, security, and authentication
 pubDate: 2025-09-12
-updatedDate: 2025-09-12
+tags: ["auth", "security", "resources"]
 ---
 
 ## Resources for Learning Auth
@@ -26,5 +27,5 @@ If you have an interest on internet identity, security, and authentication, the 
 
 I've written and presented on the subject of auth a few times already, so if you're interested please check it out.
 
-- [Auth 101](http://localhost:4321/writing/auth-101): My own version of a "introduction to auth" lecture in a long-form post. I've also presented at the Remix Austin meetup in early 2025. You can find that presentation [here](https://www.youtube.com/watch?v=Z8iFDkBRfWI).
+- [Auth 101](/writing/auth-101): My own version of a "introduction to auth" lecture in a long-form post. I've also presented at the Remix Austin meetup in early 2025. You can find that presentation [here](https://www.youtube.com/watch?v=Z8iFDkBRfWI).
 - [Getting Started with Passkeys and WebAuthn](https://www.youtube.com/watch?v=sSxibbZ3GL4): My talk about WebAuthn and Passkeys at the UtahJS 2024 conference.

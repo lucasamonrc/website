@@ -2,6 +2,7 @@
 title: About Knowledge, Intelligence, and Wisdom
 description: Wisdom separates adepts from experts
 pubDate: 2025-10-14
+tags: ["career"]
 ---
 
 ## About Knowledge, Intelligence, and Wisdom
