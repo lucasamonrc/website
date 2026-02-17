@@ -6,12 +6,10 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header
-	class="mb-12 flex w-full items-center justify-between border-b pb-4"
-	style="border-color: var(--color-border);"
+	class="mb-12 flex w-full items-center justify-between border-b border-border pb-4"
 >
 	<a
-		class="text-lg font-semibold tracking-tight no-underline"
-		style="color: var(--color-text);"
+		class="text-lg font-semibold tracking-tight text-text no-underline"
 		href="/"
 	>
 		Lucas Castro
@@ -25,13 +23,10 @@ const currentPath = Astro.url.pathname;
 						href={page.to}
 						class:list={[
 							"text-sm no-underline transition-colors",
-							isActive ? "font-medium" : "",
-						]}
-						style={
 							isActive
-								? `color: var(--color-text);`
-								: `color: var(--color-text-secondary);`
-						}
+								? "font-medium text-text"
+								: "text-text-secondary hover:text-accent",
+						]}
 					>
 						{page.label}
 					</a>

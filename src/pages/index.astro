@@ -28,18 +28,15 @@ const socials = [
 				class="rounded-full"
 			/>
 			<div>
-				<h1
-					class="text-2xl font-bold tracking-tight"
-					style="color: var(--color-text);"
-				>
+				<h1 class="text-2xl font-bold tracking-tight text-text">
 					Lucas Castro
 				</h1>
-				<p class="text-sm" style="color: var(--color-text-secondary);">
+				<p class="text-sm text-text-secondary">
 					Systems Engineer at Cloudflare
 				</p>
 			</div>
 		</div>
-		<p class="mb-4 leading-relaxed" style="color: var(--color-text);">
+		<p class="mb-4 leading-relaxed text-text">
 			Husband, dad, latter-day saint, and programmer. I like write code
 			and sometimes words. Previously a founding engineer at <a
 				href="https://trinsic.id">Trinsic</a
@@ -58,8 +55,7 @@ const socials = [
 								? "noopener noreferrer"
 								: undefined
 						}
-						class="text-sm no-underline transition-colors"
-						style="color: var(--color-text-secondary);"
+						class="text-sm text-text-secondary no-underline transition-colors"
 					>
 						{s.label}
 					</a>
@@ -70,8 +66,7 @@ const socials = [
 
 	<section>
 		<h2
-			class="mb-6 text-sm font-medium uppercase tracking-wide"
-			style="color: var(--color-text-secondary);"
+			class="mb-6 text-sm font-medium uppercase tracking-wide text-text-secondary"
 		>
 			Recent writing
 		</h2>
@@ -83,16 +78,12 @@ const socials = [
 						class="group block no-underline"
 					>
 						<div class="flex items-baseline justify-between gap-4">
-							<h3
-								class="font-medium transition-colors group-hover:text-[var(--color-accent)]"
-								style="color: var(--color-text);"
-							>
+							<h3 class="font-medium text-text transition-colors group-hover:text-accent">
 								{post.data.title}
 							</h3>
 							<time
 								datetime={post.data.pubDate.toISOString()}
-								class="shrink-0 text-sm"
-								style="color: var(--color-text-secondary);"
+								class="shrink-0 text-sm text-text-secondary"
 							>
 								{post.data.pubDate.toLocaleDateString("en-US", {
 									month: "short",
@@ -101,10 +92,7 @@ const socials = [
 							</time>
 						</div>
 						{post.data.description && (
-							<p
-								class="mt-1 text-sm leading-relaxed"
-								style="color: var(--color-text-secondary);"
-							>
+							<p class="mt-1 text-sm leading-relaxed text-text-secondary">
 								{post.data.description}
 							</p>
 						)}
@@ -114,8 +102,7 @@ const socials = [
 		</div>
 		<a
 			href="/writing"
-			class="mt-8 inline-block text-sm no-underline transition-colors"
-			style="color: var(--color-text-secondary);"
+			class="mt-8 inline-block text-sm text-text-secondary no-underline transition-colors"
 		>
 			View all posts &rarr;
 		</a>
