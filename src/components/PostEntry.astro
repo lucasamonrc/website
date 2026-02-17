@@ -14,15 +14,13 @@ const { date, title, slug, description, tags } = Astro.props;
 	<article>
 		<div class="flex items-baseline justify-between gap-4">
 			<h3
-				class="font-medium transition-colors group-hover:text-[var(--color-accent)]"
-				style="color: var(--color-text);"
+				class="font-medium text-text transition-colors group-hover:text-accent"
 			>
 				{title}
 			</h3>
 			<time
 				datetime={date.toISOString()}
-				class="shrink-0 text-sm"
-				style="color: var(--color-text-secondary);"
+				class="shrink-0 text-sm text-text-secondary"
 			>
 				{
 					date.toLocaleDateString("en-US", {
@@ -35,10 +33,7 @@ const { date, title, slug, description, tags } = Astro.props;
 		</div>
 		{
 			description && (
-				<p
-					class="mt-1 text-sm leading-relaxed"
-					style="color: var(--color-text-secondary);"
-				>
+				<p class="mt-1 text-sm leading-relaxed text-text-secondary">
 					{description}
 				</p>
 			)
@@ -47,10 +42,7 @@ const { date, title, slug, description, tags } = Astro.props;
 			tags && tags.length > 0 && (
 				<div class="mt-2 flex flex-wrap gap-2">
 					{tags.map((tag) => (
-						<span
-							class="rounded-full px-2 py-0.5 text-xs"
-							style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary);"
-						>
+						<span class="rounded-full bg-bg-secondary px-2 py-0.5 text-xs text-text-secondary">
 							{tag}
 						</span>
 					))}

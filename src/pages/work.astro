@@ -5,16 +5,10 @@ import { WORK, TALKS } from "../consts";
 
 <Root title="Work | Lucas Castro">
 	<section class="mb-12">
-		<h1
-			class="mb-2 text-2xl font-bold tracking-tight"
-			style="color: var(--color-text);"
-		>
+		<h1 class="mb-2 text-2xl font-bold tracking-tight text-text">
 			Work
 		</h1>
-		<p
-			class="text-sm leading-relaxed"
-			style="color: var(--color-text-secondary);"
-		>
+		<p class="text-sm leading-relaxed text-text-secondary">
 			I do my best work in fast-paced, cross-functional teams, and I like
 			to own my projects end-to-end.
 		</p>
@@ -52,8 +46,7 @@ import { WORK, TALKS } from "../consts";
 
 	<section class="mb-16">
 		<h2
-			class="mb-6 text-sm font-medium uppercase tracking-wide"
-			style="color: var(--color-text-secondary);"
+			class="mb-6 text-sm font-medium uppercase tracking-wide text-text-secondary"
 		>
 			Experience
 		</h2>
@@ -62,24 +55,15 @@ import { WORK, TALKS } from "../consts";
 				WORK.map((work) => (
 					<div class="flex items-baseline justify-between gap-4">
 						<div>
-							<span
-								class="font-medium"
-								style="color: var(--color-text);"
-							>
+							<span class="font-medium text-text">
 								{work.position}
 							</span>
-							<span style="color: var(--color-text-secondary);">
-								{" "}
-								at{" "}
-							</span>
+							<span class="text-text-secondary"> at </span>
 							<a href={work.companyUrl} class="text-sm">
 								{work.company}
 							</a>
 						</div>
-						<span
-							class="shrink-0 text-sm"
-							style="color: var(--color-text-secondary);"
-						>
+						<span class="shrink-0 text-sm text-text-secondary">
 							{work.range}
 						</span>
 					</div>
@@ -90,8 +74,7 @@ import { WORK, TALKS } from "../consts";
 
 	<section>
 		<h2
-			class="mb-6 text-sm font-medium uppercase tracking-wide"
-			style="color: var(--color-text-secondary);"
+			class="mb-6 text-sm font-medium uppercase tracking-wide text-text-secondary"
 		>
 			Talks
 		</h2>
@@ -99,13 +82,10 @@ import { WORK, TALKS } from "../consts";
 			{
 				TALKS.map((talk) => (
 					<div class="flex items-baseline justify-between gap-4">
-						<a href={talk.videoUrl} class="font-medium text-sm">
+						<a href={talk.videoUrl} class="text-sm font-medium">
 							{talk.title}
 						</a>
-						<span
-							class="shrink-0 text-sm"
-							style="color: var(--color-text-secondary);"
-						>
+						<span class="shrink-0 text-sm text-text-secondary">
 							{talk.date}
 						</span>
 					</div>
