@@ -3,13 +3,11 @@
 
 export const SITE_TITLE = "Lucas Castro";
 export const SITE_DESCRIPTION =
-	"Hello, there! I'm Lucas. Welcome to my personal website. You can learn more about me, my work, and the things I care about here. I talk about programming, careers, and the tech industry.";
+	"Software engineer at Cloudflare. I write about programming, careers, and the tech industry.";
 
 export const PAGES = [
-	{ to: "/work", label: "work" },
 	{ to: "/writing", label: "writing" },
-	{ to: "/talks", label: "talks" },
-	{ to: "/misc", label: "misc" },
+	{ to: "/work", label: "work" },
 ];
 
 export const WORK = [
