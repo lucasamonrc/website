@@ -2,6 +2,7 @@
 title: '"Networking" is terrible advice'
 description: Networking sucks, rarely works, and it isn't a serious job-hunting strategy
 pubDate: 2025-08-18
+tags: ["career"]
 ---
 
 ## "Networking" is terrible advice

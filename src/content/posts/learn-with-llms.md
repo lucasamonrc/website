@@ -1,12 +1,14 @@
 ---
 title: Using LLMs to Learn a New Programming Language
+description: Practical dos and don'ts for integrating LLMs into your learning process
 pubDate: 2025-07-25
 updatedDate: 2025-08-02
+tags: ["ai", "learning"]
 ---
 
 ## Using LLMs to Learn a New Programming Language
 
-> The main benefit I’ve seen from using Copilot Chat is the decreased feeling of “loneliness” when learning a new language. The chat feature does feel more of a “copiloting” experience, as if I was pair programming with someone. Here are some practical dos and don’ts I came up with when integrating copilot chat in my learning process.
+> The main benefit I've seen from using Copilot Chat is the decreased feeling of "loneliness" when learning a new language. The chat feature does feel more of a "copiloting" experience, as if I was pair programming with someone. Here are some practical dos and don'ts I came up with when integrating copilot chat in my learning process.
 
 ### Language Exploration
 
@@ -17,7 +19,7 @@ updatedDate: 2025-08-02
 - Translate code to other language
 - Evaluate small experiments
 
-#### Don’ts
+#### Don'ts
 
 - Not consult official documentation
 - Provide huge chunks of code to explain
@@ -31,7 +33,7 @@ updatedDate: 2025-08-02
 - Ask to organize basic requirements
 - Ask questions about design patterns
 
-#### Don’ts
+#### Don'ts
 
 - Let it do all the work
 - Try to understand generated boilerplate
@@ -45,7 +47,7 @@ updatedDate: 2025-08-02
 - Ask for test cases
 - Request hints
 
-#### Don’ts
+#### Don'ts
 
 - Ask to write the algorithm
 - Use it as an autocomplete feature
@@ -58,7 +60,7 @@ updatedDate: 2025-08-02
 - Use chat as a rubber duck
 - Generate basic automated test suite
 
-#### Don’ts
+#### Don'ts
 
 - Use auto-complete features
 - Ask for hints

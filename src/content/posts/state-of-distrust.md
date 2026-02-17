@@ -1,7 +1,8 @@
 ---
 title: Managing a State of Distrust
+description: A mental model for reasoning about authentication using sessions, tokens, and exchanges
 pubDate: 2025-09-12
-updatedDate: 2025-09-12
+tags: ["auth", "security"]
 ---
 
 ## Managing a State of Distrust
@@ -46,7 +47,7 @@ The authenticated relationship between client and server, along with the data th
 
 #### **Tokens**
 
-The \***\*tangible representation of a session. **Tokens\*\* can either be opaque (e.g., a secure random string) or self-contained (e.g., a JWT). Clients exchange tokens for data, and servers use them to verify/validate that the client is authenticated and has access to that data.
+The tangible representation of a session. **Tokens** can either be opaque (e.g., a secure random string) or self-contained (e.g., a JWT). Clients exchange tokens for data, and servers use them to verify/validate that the client is authenticated and has access to that data.
 
 #### **Exchanges**
 

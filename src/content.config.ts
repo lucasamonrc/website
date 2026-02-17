@@ -10,6 +10,7 @@ const posts = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: image().optional(),
+			tags: z.array(z.string()).optional(),
 		}),
 });
 
@@ -23,15 +24,4 @@ const pages = defineCollection({
 		}),
 });
 
-const misc = defineCollection({
-	loader: glob({ base: "./src/content/misc", pattern: "**/*.{md,mdx}" }),
-	schema: () =>
-		z.object({
-			title: z.string(),
-			description: z.string().optional(),
-			pubDate: z.coerce.date(),
-			updatedDate: z.coerce.date().optional(),
-		}),
-});
-
-export const collections = { posts, pages, misc };
+export const collections = { posts, pages };
