@@ -3,23 +3,59 @@ interface Props {
 	date: Date;
 	title: string;
 	slug: string;
+	description?: string;
+	tags?: string[];
 }
 
-const { date, title, slug } = Astro.props;
+const { date, title, slug, description, tags } = Astro.props;
 ---
 
-<article class="flex flex-col gap-x-4">
-	<span class="text-xs"
-		>{
-			date.toLocaleDateString("en-US", {
-				year: "numeric",
-				day: "2-digit",
-				month: "short",
-				timeZone: "UTC",
-			})
-		}</span
-	>
-	<a href={slug}>
-		{title}
-	</a>
-</article>
+<a href={slug} class="group block no-underline">
+	<article>
+		<div class="flex items-baseline justify-between gap-4">
+			<h3
+				class="font-medium transition-colors group-hover:text-[var(--color-accent)] dark:group-hover:text-[var(--color-accent-dark)]"
+				style="color: var(--color-text);"
+			>
+				{title}
+			</h3>
+			<time
+				datetime={date.toISOString()}
+				class="shrink-0 text-sm"
+				style="color: var(--color-text-secondary);"
+			>
+				{
+					date.toLocaleDateString("en-US", {
+						month: "short",
+						year: "numeric",
+						timeZone: "UTC",
+					})
+				}
+			</time>
+		</div>
+		{
+			description && (
+				<p
+					class="mt-1 text-sm leading-relaxed"
+					style="color: var(--color-text-secondary);"
+				>
+					{description}
+				</p>
+			)
+		}
+		{
+			tags && tags.length > 0 && (
+				<div class="mt-2 flex flex-wrap gap-2">
+					{tags.map((tag) => (
+						<span
+							class="rounded-full px-2 py-0.5 text-xs"
+							style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary);"
+						>
+							{tag}
+						</span>
+					))}
+				</div>
+			)
+		}
+	</article>
+</a>

@@ -1,29 +1,37 @@
 ---
-import { getCollection, getEntry } from "astro:content";
+import { getCollection } from "astro:content";
 import Root from "../../layouts/Root.astro";
 import PostEntry from "../../components/PostEntry.astro";
-import { render } from "astro:content";
 
 const posts = (await getCollection("posts")).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
-
-const writingPage = await getEntry("pages", "writing");
-
-const { Content } = await render(writingPage!);
 ---
 
 <Root title="Writing | Lucas Castro">
-	<Content />
-	<secion class="flex flex-col space-y-4">
+	<section class="mb-10">
+		<h1
+			class="mb-2 text-2xl font-bold tracking-tight"
+			style="color: var(--color-text);"
+		>
+			Writing
+		</h1>
+		<p class="text-sm leading-relaxed" style="color: var(--color-text-secondary);">
+			Thoughts on programming, careers, and the tech industry.
+		</p>
+	</section>
+
+	<section class="flex flex-col gap-8">
 		{
 			posts.map((post) => (
 				<PostEntry
 					date={post.data.pubDate}
 					title={post.data.title}
 					slug={"/writing/" + post.id}
+					description={post.data.description}
+					tags={post.data.tags}
 				/>
 			))
 		}
-	</secion>
+	</section>
 </Root>
