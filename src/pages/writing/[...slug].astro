@@ -20,5 +20,58 @@ const { Content } = await render(post);
 	description={post.data.description}
 	image={post.data.heroImage}
 >
-	<Content />
+	<article>
+		<header class="mb-8">
+			<h1
+				class="text-2xl font-bold tracking-tight"
+				style="color: var(--color-text);"
+			>
+				{post.data.title}
+			</h1>
+			<div class="mt-2 flex flex-wrap items-center gap-3">
+				<time
+					datetime={post.data.pubDate.toISOString()}
+					class="text-sm"
+					style="color: var(--color-text-secondary);"
+				>
+					{
+						post.data.pubDate.toLocaleDateString("en-US", {
+							month: "long",
+							day: "numeric",
+							year: "numeric",
+							timeZone: "UTC",
+						})
+					}
+				</time>
+				{
+					post.data.tags && post.data.tags.length > 0 && (
+						<div class="flex flex-wrap gap-2">
+							{post.data.tags.map((tag: string) => (
+								<span
+									class="rounded-full px-2 py-0.5 text-xs"
+									style="background-color: var(--color-bg-secondary); color: var(--color-text-secondary);"
+								>
+									{tag}
+								</span>
+							))}
+						</div>
+					)
+				}
+			</div>
+		</header>
+
+		<div class="prose max-w-none">
+			<Content />
+		</div>
+
+		<footer class="mt-12 pt-6 border-t border-[var(--color-border)] dark:border-[var(--color-border-dark)]">
+			<a
+				href="/writing"
+				class="text-sm no-underline transition-colors"
+				style="color: var(--color-text-secondary);"
+			>
+				&larr; Back to writing
+			</a>
+		</footer>
+	</article>
 </Root>
