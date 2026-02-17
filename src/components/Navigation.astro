@@ -1,13 +1,44 @@
 ---
 import { PAGES } from "../consts";
-import NavLink from "./NavLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const currentPath = Astro.url.pathname;
 ---
 
-<header class="w-full flex flex-col items-start">
-	<a class="text-2xl no-underline leading-12" href="/">Lucas Castro</a>
-	<nav
-		class="w-full flex flex-wrap justify-start space-x-3 items-center mb-4"
+<header
+	class="mb-12 flex w-full items-center justify-between border-b border-[var(--color-border)] pb-4 dark:border-[var(--color-border-dark)]"
+>
+	<a
+		class="text-lg font-semibold tracking-tight no-underline"
+		style="color: var(--color-text);"
+		href="/"
 	>
-		{PAGES.map((page) => <NavLink href={page.to}>{page.label}</NavLink>)}
+		Lucas Castro
+	</a>
+	<nav class="flex items-center gap-6">
+		{
+			PAGES.map((page) => {
+				const isActive = currentPath.startsWith(page.to);
+				return (
+					<a
+						href={page.to}
+						class:list={[
+							"text-sm no-underline transition-colors",
+							isActive
+								? "font-medium"
+								: "hover:text-[var(--color-accent)] dark:hover:text-[var(--color-accent-dark)]",
+						]}
+						style={
+							isActive
+								? `color: var(--color-text);`
+								: `color: var(--color-text-secondary);`
+						}
+					>
+						{page.label}
+					</a>
+				);
+			})
+		}
+		<ThemeToggle />
 	</nav>
 </header>
