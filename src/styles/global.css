@@ -26,8 +26,8 @@
 	--theme-text: #111827;
 	--theme-text-secondary: #6b7280;
 	--theme-border: #e5e7eb;
-	--theme-accent: #4f46e5;
-	--theme-accent-hover: #4338ca;
+	--theme-accent: #0ea5e9;
+	--theme-accent-hover: #0369a1;
 }
 
 /* Dark palette */
@@ -37,8 +37,8 @@
 	--theme-text: #e5e7eb;
 	--theme-text-secondary: #9ca3af;
 	--theme-border: #262626;
-	--theme-accent: #818cf8;
-	--theme-accent-hover: #a5b4fc;
+	--theme-accent: #38bdf8;
+	--theme-accent-hover: #7dd3fc;
 }
 
 /* Base styles */

@@ -22,7 +22,7 @@ const currentPath = Astro.url.pathname;
 					<a
 						href={page.to}
 						class:list={[
-							"text-sm no-underline transition-colors",
+							"relative text-sm no-underline transition-colors after:absolute after:bottom-0 after:left-0 after:h-px after:w-0 after:bg-current after:transition-[width] after:duration-150 hover:after:w-full",
 							isActive
 								? "font-medium text-text"
 								: "text-text-secondary hover:text-accent",
