@@ -55,6 +55,10 @@ a {
 	@apply text-accent hover:text-accent-hover underline-offset-4 transition-colors;
 }
 
+a:visited {
+	color: inherit;
+}
+
 /* Prose overrides */
 .prose {
 	--tw-prose-body: var(--color-text);
