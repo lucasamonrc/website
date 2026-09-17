@@ -1,75 +1,53 @@
 ---
-// Import the global.css file here so that it is included on
-// all pages through the use of the <BaseHead /> component.
 import "../styles/global.css";
-import type { ImageMetadata } from "astro";
-import FallbackImage from "../assets/meta-image.png";
-import { SITE_TITLE } from "../consts";
 
 interface Props {
 	title: string;
 	description: string;
-	image?: ImageMetadata;
 }
 
+const { title, description } = Astro.props;
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
-
-const { title, description, image = FallbackImage } = Astro.props;
+const jsonLd = {
+	"@context": "https://schema.org",
+	"@type": "Person",
+	name: "Lucas Castro",
+	url: Astro.site?.toString(),
+	jobTitle: "Systems Engineer",
+	worksFor: {
+		"@type": "Organization",
+		name: "Cloudflare",
+		url: "https://www.cloudflare.com",
+	},
+	alumniOf: {
+		"@type": "CollegeOrUniversity",
+		name: "Brigham Young University",
+		url: "https://byu.edu",
+	},
+	sameAs: ["https://www.linkedin.com/in/lucasamonrc"],
+};
 ---
 
-<!-- Global Metadata -->
 <meta charset="utf-8" />
-<meta name="viewport" content="width=device-width,initial-scale=1" />
-<link rel="icon" type="image/x-icon" href="/favicon.ico" />
-<link rel="sitemap" href="/sitemap-index.xml" />
-<link
-	rel="alternate"
-	type="application/rss+xml"
-	title={SITE_TITLE}
-	href={new URL("rss.xml", Astro.site)}
-/>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="generator" content={Astro.generator} />
+<meta name="color-scheme" content="light dark" />
 
-<!-- Font preconnect -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link
-	href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&display=swap"
-	rel="stylesheet"
-/>
-
-<!-- Dark mode: apply saved preference before render to prevent flash -->
-<script is:inline>
-	(function () {
-		const stored = localStorage.getItem("theme");
-		if (
-			stored === "dark" ||
-			((!stored || stored === "system") &&
-				window.matchMedia("(prefers-color-scheme: dark)").matches)
-		) {
-			document.documentElement.classList.add("dark");
-		}
-	})();
-</script>
-
-<!-- Canonical URL -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="canonical" href={canonicalURL} />
+<link rel="sitemap" href="/sitemap-index.xml" />
 
-<!-- Primary Meta Tags -->
 <title>{title}</title>
-<meta name="title" content={title} />
 <meta name="description" content={description} />
 
-<!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
-<meta property="og:url" content={Astro.url} />
+<meta property="og:type" content="profile" />
+<meta property="og:url" content={canonicalURL} />
 <meta property="og:title" content={title} />
 <meta property="og:description" content={description} />
-<meta property="og:image" content={new URL(image.src, Astro.url)} />
 
-<!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={Astro.url} />
-<meta property="twitter:title" content={title} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={new URL(image.src, Astro.url)} />
+<meta name="twitter:card" content="summary" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+
+<script type="application/ld+json" set:html={JSON.stringify(jsonLd)} />

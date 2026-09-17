@@ -2,14 +2,10 @@
 import Root from "../layouts/Root.astro";
 ---
 
-<Root title="Not Found | Lucas Castro">
-	<section class="py-16 text-center">
-		<h1 class="mb-2 text-4xl font-bold tracking-tight text-text">
-			404
-		</h1>
-		<p class="mb-6 text-text-secondary">
-			This page doesn't exist.
-		</p>
-		<a href="/" class="text-sm"> Go home &rarr; </a>
+<Root title="Not Found | Lucas Castro" description="This page does not exist.">
+	<section class="not-found" aria-labelledby="not-found-title">
+		<h1 id="not-found-title">404</h1>
+		<p>This page does not exist.</p>
+		<a href="/">Go home &rarr;</a>
 	</section>
 </Root>

@@ -1,36 +1,7 @@
 ---
 const year = new Date().getFullYear();
-const links = [
-	{ label: "GitHub", href: "https://github.com/lucasamonrc" },
-	{ label: "LinkedIn", href: "https://www.linkedin.com/in/lucasamonrc" },
-	{ label: "RSS", href: "/rss.xml" },
-];
 ---
 
-<footer class="mt-16 border-t border-border pt-6 pb-8">
-	<div class="flex flex-col items-center justify-between gap-4 sm:flex-row">
-		<nav class="flex gap-4">
-			{
-				links.map((link) => (
-					<a
-						href={link.href}
-						target={
-							link.href.startsWith("http") ? "_blank" : undefined
-						}
-						rel={
-							link.href.startsWith("http")
-								? "noopener noreferrer"
-								: undefined
-						}
-						class="text-sm text-text-secondary no-underline transition-colors"
-					>
-						{link.label}
-					</a>
-				))
-			}
-		</nav>
-		<span class="text-sm text-text-secondary">
-			&copy; {year} Lucas Castro
-		</span>
-	</div>
+<footer class="site-footer">
+	<p>&copy; {year} Lucas Castro</p>
 </footer>

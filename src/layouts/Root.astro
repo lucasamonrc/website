@@ -7,10 +7,9 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 interface Props {
 	title?: string;
 	description?: string;
-	image?: ImageMetadata;
 }
 
-const { title, description, image } = Astro.props;
+const { title, description } = Astro.props;
 ---
 
 <!doctype html>
@@ -19,14 +18,15 @@ const { title, description, image } = Astro.props;
 		<BaseHead
 			title={title || SITE_TITLE}
 			description={description || SITE_DESCRIPTION}
-			image={image}
 		/>
 	</head>
-	<body class="mx-auto w-full max-w-2xl px-6 py-12 md:py-20">
-		<Navigation />
-		<main>
-			<slot />
-		</main>
-		<Footer />
+	<body>
+		<div class="page-shell">
+			<Navigation />
+			<main id="content" class="content">
+				<slot />
+			</main>
+			<Footer />
+		</div>
 	</body>
 </html>

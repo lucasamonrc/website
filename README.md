@@ -1,32 +1,35 @@
-# Personal Website
+# Lucas Castro
 
-My personal website built with modern web technologies. Visit [lucasacastro.com](https://lucasacastro.com).
+A small static personal homepage for [lucasacastro.com](https://lucasacastro.com).
 
-## Tech Stack
+## Direction
 
-- [Astro](https://astro.build) - Static site generator
-- React - Interactive components
-- MDX - Enhanced markdown for content
-- TypeScript - Type safety
-- Cloudflare - Hosting and deployment
+- Astro static site generation only
+- One Markdown-authored homepage at `src/pages/index.md`
+- No client-side JavaScript, React, MDX, content collections, RSS feed, or blog
+- Native CSS in `src/styles/global.css`
+- System color scheme through `prefers-color-scheme`
+- Cloudflare static assets deploy from `dist/`
 
 ## Development
 
 ```bash
-# Install dependencies
 npm install
-
-# Start development server
 npm run dev
-
-# Build for production
 npm run build
+npm run preview
 ```
 
 ## Structure
 
-- `src/pages/*` - Website routes and pages
-- `src/content/*` - MDX content (posts, talks, work)
-- `src/components/*` - UI components
-- `src/styles/*` - Global styles
-- `public/*` - Static assets
+- `src/pages/index.md` - homepage content
+- `src/pages/404.astro` - not found page
+- `src/layouts/Root.astro` - shared document shell
+- `src/components/BaseHead.astro` - metadata and global stylesheet import
+- `src/styles/global.css` - native CSS
+- `public/` - static assets, including `me.jpg`, `favicon.svg`, and `robots.txt`
+- `wrangler.jsonc` - Cloudflare static assets configuration for `dist/`
+
+## Deployment
+
+Build the site with `npm run build`, then deploy the generated `dist/` directory through Cloudflare using the `wrangler.jsonc` assets configuration.
